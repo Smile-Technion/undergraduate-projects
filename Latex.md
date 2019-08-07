@@ -1,5 +1,5 @@
 ---
-layout: default
+layouts: default
 mathjax: true
 permalink: /linear_re/
 ---
