@@ -6,13 +6,6 @@ permalink: /linear_re/
 
 <hr />
 
-### To Tutorial Page:
-  <div class="materials-item">
-      <a href="https://orensp.github.io/C096411/HTlinear_re">
-        Tutorial Linear Regression
-      </a>
-    </div>
-
 ### Lecture
 
 - [Linear regression-2D-Model](#LR_2D)
