@@ -15,6 +15,5 @@
 * Mujoco-py- working with python in mujoco https://github.com/openai/mujoco-py if you are windows users you need to install visual studio:
 	* Visual C++ Build Tools - https://stackoverflow.com/a/45918595/7448860
 
-
-After installing all this programes try to open and run graduate-projects\mujoco_files\simple_example\Mujoco_py_example.py 
-using pycharm and see if you get code_video.mp4.
+#### After installing:
+Try to open and run graduate-projects\mujoco_files\simple_example\Mujoco_py_example.py using pycharm and see if you get code_video.mp4.
