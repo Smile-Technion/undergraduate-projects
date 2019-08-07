@@ -3,7 +3,7 @@
 #### List of files by reading order:
 
 * Katbar_tutorials
-* Try mujoco good example of how to extract dynamics parameters from a known robot in mujoco
+* mujoco_files\simple_example good example of how to extract dynamics parameters from a known robot in mujoco
 * Impedance_control_papers
 
 
@@ -17,3 +17,12 @@
 
 #### After installing:
 Try to open and run graduate-projects\mujoco_files\simple_example\Mujoco_py_example.py using pycharm and see if you get code_video.mp4.
+
+#### Latex examples:
+
+Latex.md is an example on how to write latex in github .md files. 
+
+
+#### Learning python:
+
+You can take the course https://www.coursera.org/learn/python-for-applied-data-science-ai?action=enroll in coursera. The course should take around 10 hours start to finish. you can take the course for free without an exam or pay and get certificate(which you can put on your linkedin acount). When you sign you have 1 week to cancel your sighning which is more than enough to finish the course. 
