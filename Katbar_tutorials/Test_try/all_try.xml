@@ -1,0 +1,42 @@
+<mujoco model="example">
+    <compiler coordinate="global"/>
+    <default>
+        <geom rgba=".8 .6 .4 1"/>
+    </default>
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1" 
+                 width="256" height="256"/>
+    </asset>
+    <worldbody>
+        <light pos="0 1 1" dir="0 -1 -1" diffuse="1 1 1"/>
+        <geom name="floor" pos="0 0 0" rgba="0.8 0.9 0.8 1" size="10 10 10" type="plane"/>
+        <body>
+			<site name="world" size="0.1" pos="0 0 0" />
+			
+            <geom name="first_pole" type="capsule" fromto="0 0 0  0 0 0.5" size="0.04"/>
+            <joint name='a' type="hinge" pos="0 0 0" axis="0 0 1" />
+            <body name="second_pole">
+				<inertial pos="0 0 0" mass="0.00000001" diaginertia="1e-008 1e-008 1e-008" />
+                <geom type="capsule" fromto="0 0 0.5  0.5 0 0.5" size="0.04" name="second_pole"/>
+                <joint name='b' type="hinge" pos="0 0 0.5" axis="0 1 0"/>      
+				<body name='third_pole'>
+					<inertial pos="0 0 0" mass="0.00000001" diaginertia="1e-008 1e-008 1e-008" />
+					<geom type="capsule" fromto="0.5 0 0.5  1 0 0.5" size="0.04" name="third_pole"/>
+					<joint name='c' type="hinge" pos="0.5 0 0.5" axis="0 1 0"/>    
+					<site name="target" size="0.1" pos="1 0 0.5" />
+					<body name="mass">
+						<inertial pos="1 0 0.5" mass="1e-2" diaginertia="1e-008 1e-008 1e-008" />
+						<geom type="sphere" pos="1 0 0.5" size="0.2" name="mass"/>
+					</body>
+				</body>
+            </body>
+        </body>
+    </worldbody>
+	<actuator>
+		<motor joint="a"/>
+		<motor joint="b"/>
+		<motor joint="c"/>
+	</actuator>	
+	
+
+</mujoco>

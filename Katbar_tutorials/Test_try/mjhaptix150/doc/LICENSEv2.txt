@@ -1,0 +1,31 @@
+Roboti LLC grants you license to use the MuJoCo HAPTIX software
+(hereafter "Software") subject to the following terms and conditions:
+
+  1. The binary files included with the Software will not be modified,
+     disassembled or reverse-engineered.
+
+  2. The text files included with the Software are licensed under the terms of 
+     the MIT license, unless stated otherwise in the file itself.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+The Software is designed and tested for use in simulations only. It may
+occasionally become unstable or otherwise behave unexpectedly. Therefore
+the Software does not meet the safety requirements for operating machinery,
+controlling devices that are capable of causing physical harm, or use in
+any other real-life situations. If the Software is incorporated in a system
+used in real-life situations, it is the user's responsibility to implement
+appropriate safety mechanisms, and ensure that a failure of the Software
+cannot cause physical harm or any other damage. ROBOTI LLC SPECIFICALLY
+DISCLAIMS ALL LIABILITY FOR DAMAGES RESULTING FROM USING THE SOFTWARE
+IN REAL-LIFE SITUATIONS.

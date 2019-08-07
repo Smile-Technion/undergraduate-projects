@@ -1,0 +1,207 @@
+<h3>Commands and keyboard shortcuts</h3>
+
+<h4>Toolbar</h4>
+
+<p>The Pin Toolbar and File Menu tools do not have keyboard shortcuts; use the mouse to select them.<br><br></p>
+
+<table border="1" valign="top">
+<th align="left">Key</th>
+<th align="left">Effect</th>
+<tr>
+<td><b>F1</b>:<br>Help</td>
+<td>Show/hide the Help dialog collection.</td>
+</tr>
+<tr>
+<td><b>F2</b>:<br>Settings</td>
+<td>Show/hide the Settings dialog collection. This can be docked to the left or to the right of the main window. Note that the dialogs can be further docked and resized within the Setting dialog collection.</td>
+</tr>
+<tr>
+<td><b>F3</b>:<br>Sliders</td>
+<td>Show/hide the Sliders dialog collection. Sliders can be used to adjust the joints when the simulation paused, or to set the control signals to the actuators manually. The Apply button has to be enabled to actually apply the controls.</td>
+</tr>
+<tr>
+<td><b>F4</b>:<br>Info</td>
+<td>Show/hide an OpenGL overlay in the lower left corner, with runtime information about the simulation.</td>
+</tr>
+<tr>
+<td><b>Ctrl+N</b>:<br>Sensors</td>
+<td>Show/hide an OpenGL overlay in the lower right corner, with sensor data.</td>
+</tr>
+<tr>
+<td><b>Ctrl+F</b>:<br>Profiler</td>
+<td>Show/hide an OpenGL overlay on the right of the screen, with profiler information.</td>
+</tr>
+<tr>
+<td><b>F5</b>:<br>Full Screen</td>
+<td>Toggle fullscreen mode. All open dialogs remain on top. This mode is strongly recommended for VR-related use.</td>
+</tr>
+<tr>
+<td><b>F6</b>:<br>Stereo</td>
+<td>Toggle sterescopic rendering. If quad-buffered OpenGL is available and the monitor refresh rate is at least 100Hz, it uses frame-sequential stereo (for NVidia 3D vision or Crystal Eyes glasses). Otherwise it uses side-by-side stereo which can be sent to some head mounted displays. There is a flip L/R box in the Settings / Render dialog in case the stereo ends up flipped.</td>
+</tr>
+<tr>
+<td><b>F7</b>:<br>Head Camera</td>
+<td>Enable/disable the head camera. When enabled, the head position relative to the monitor is determined from motion capture data. This creates the appearance of a virtual world glued to the screen. Note that the mouse can be used to adjust the scale, offset and tilt of the virtual world. Always use this in fullscreen mode.</td>
+</tr>
+<tr>
+<td><b>F8</b>:<br>Motion Capture</td>
+<td>Start/stop motion capture of the hand. If the model has a mocap body defined, its position and orientation will move with the mocap data. This key is also the only calibration step: when you press it, MuJoCo will record the physical hand pose and the virtual mocap body pose. When the hand then moves away from its reference pose, the body will move by the same amount from its reference pose. If you stop moton capture the body will remain at the last pose. You can then readjust your hand and start again. This is similar to lifting the regular mouse up from the table and repositioning it, except it works in 6D.</td>
+</tr>
+<tr>
+<td><b>F9</b>:<br>Record</td>
+<td>Start/stop data recording. When recording starts, a new data file with unique filename is created in the datalog directory. When recording stops or the model is (re)loaded, the data file is closed.</td>
+</tr>
+<tr>
+<td><b>Space</b>:<br>Run</td>
+<td>Run/pause the simulation. It is important to be aware of the state of this tool at all times. If the info overlay is shown, it also conveys information about this state (most numbers disappear in paused mode).</td>
+</tr>
+<tr>
+<td><b>BackSpace</b>:<br>Reset</td>
+<td>Reset all degrees of freedom to the reference configuration in which the model was defined. Use this key to recover when things go wrong.</td>
+</tr>
+<tr>
+<td><b>Ctrl+L</b>:<br>Re-Load Model</td>
+<td>Similar effect to Reset, but it actually reloads the model from disk. This is very useful when you are editing the model in an XML editor; pressing Reload often allows you to see the changes.</td>
+</tr>
+<tr>
+<td><b>Ctrl+A</b>:<br>Re-Align Model</td>
+<td>Resets the camera LookAt point and distance (but not the azimuth and elevation) the values defined in the model. Does not change the simulation state. This is useful when the camera looses the bodies of interest.</td>
+</tr>
+
+</table>
+
+<h4>File Menu</h4>
+
+<table border="1" valign="top">
+<th align="left">Key</th>
+<th align="left">Effect</th>
+<tr>
+<td><b>Ctrl+O</b>:<br>Open</td>
+<td>File Open dialog. You can load MuJoCo models in XML or MJB format.</td>
+</tr>
+<tr>
+<td><b>Ctrl+S</b>:<br>Save</td>
+<td>File Save dialog. You can save MuJoCo models in XML, MJB or text format. Saving in XML produces a "canonical" version of the model. Saving in MJB is useful because MJB models load instantaneously. The text format is human-readable but cannot be loaded.</td>
+</tr>
+<tr>
+<td><b>Ctrl+P</b>:<br>Print data</td>
+<td>The simulator uses the internal data structure mjData to store all results of the computation. You can print this data structure into the text file MJDATA.TXT with this command. This is useful for model debugging.</td>
+</tr>
+<tr>
+<td><b>Ctrl+Q</b>:<br>Quit</td>
+<td>Quit the program, without any prompts or confirmation dialogs. Closing the main window has the same effect.</td>
+</tr>
+</table>
+
+<h4>Render options</h4>
+
+<p>
+The three selection objects control the camera (free or predefined in the model), the type of object that should be labeled, and the type of object whose Cartesian frame should be visualized.
+<br>
+
+<p>All of the render options have keyboard shortcuts. Press Alt when the Settings / Render dialog has input focus to reveal them. The shortcuts and their corresponding commands are:<br><br>
+</p>
+
+<table border="1" valign="top">
+<th align="left">Key</th>
+<th align="left">Effect</th>
+<tr>
+<td><b>S</b>:<br>Shadow</td>
+<td>Enable/disable shadow mapping. Note that some videocard/driver/OS combinations many not support OpenGL 3.2 which is needed for shadow mapping, in which case this feature is not available.</td>
+</tr>
+<tr>
+<td><b>R</b>:<br>Reflection</td>
+<td>Enable/disable reflection rendering. In the model any material can be defined as reflective, but currently only planes show reflections.</td>
+</tr>
+<tr>
+<td><b>G</b>:<br>Fog</td>
+<td>Enable/disable fog rendering.</td>
+</tr>
+<tr>
+<td><b>W</b>:<br>Wireframe</td>
+<td>Enable/disable wireframe mode.</td>
+</tr>
+<tr>
+<td><b>K</b>:<br>Skybox</td>
+<td>Enable/disable skybox rendering (must have texture loaded).</td>
+</tr>
+<tr>
+<td><b>H</b>:<br>Convex Hull</td>
+<td>Replace all meshes with their convex hull. There are two situations where this will not have a visible effect: the meshes are already convex, or the meshes are never used for collisions - in which case their convex hull is not computed.</td>
+</tr>
+<tr>
+<td><b>X</b>:<br>Texture</td>
+<td>Enable/disable rendering of textures.</td>
+</tr>
+<tr>
+<td><b>J</b>:<br>Joint</td>
+<td>Enable/disable rendering of joints. MuJoCo uses different style arrows for hingle and sliding joints, spheres for ball joints, and boxes for free joints. Note that joints must be rendered in order to show the joint names (from the Label selection box).</td>
+</tr>
+<tr>
+<td><b>U</b>:<br>Actuator</td>
+<td>Enable/disable rendering of actuators.</td>
+</tr>
+<tr>
+<td><b>Q</b>:<br>Camera</td>
+<td>Enable/disable rendering of cameras.</td>
+</tr>
+<tr>
+<td><b>Z</b>:<br>Light</td>
+<td>Enable/disable rendering of lights.</td>
+</tr>
+<tr>
+<td><b>N</b>:<br>Constraint</td>
+<td>Enable/disable rendering of a string corresponding to equality constraint violations.</td>
+</tr>
+<tr>
+<td><b>I</b>:<br>Inertia</td>
+<td>Enable/disable rendering of an equivalent inertia box. This is computed from the mass, inertia matrix, and the assumption of uniform density. Note that many preexisting models have incorrect inertias - which show as unreasonably large boxes.</td>
+</tr>
+<tr>
+<td><b>B</b>:<br>Perturb Force</td>
+<td>Enable/disable rendering of arrow corresponding to perturbation forces (applied with the 3D mouse or regular mouse).</td>
+</tr>
+<tr>
+<td><b>O</b>:<br>Perturb Object</td>
+<td>Enable/disable rendering of strings/boxes showing the reference position/orientation of the spring used for mouse perturbations.</td>
+</tr>
+<tr>
+<td><b>C</b>:<br>Contact Point</td>
+<td>Enable/disable rendering of all contact points. They are rendered as flat cylinders, showing the position as well as the normal orientation.</td>
+</tr>
+<tr>
+<td><b>F</b>:<br>Contact Force</td>
+<td>Enable/disable rendering of contact forces as arrows.</td>
+</tr>
+<tr>
+<td><b>P</b>:<br>Contact Split</td>
+<td>Split the contact force into its normal and tangential components, rendering two arrows per contact point.</td>
+</tr>
+<tr>
+<td><b>T</b>:<br>Transparent</td>
+<td>Make all dynamic bodies (or rather their geoms) transparent, beyond any transparency defined in the model. This is very useful to see what is going on in cluttered models, especially if you want to render other decorative elements such as joints and auto-connect.</td>
+</tr>
+<tr>
+<td><b>A</b>:<br>Auto Connect</td>
+<td>Render a "skeleton" by connecting the joints with the centers of mass of the bodies.</td>
+</tr>
+<tr>
+<td><b>M</b>:<br>Center of Mass</td>
+<td>Render a sphere corresponding to the center of mass of each kinematic tree in the model.</td>
+</tr>
+<tr>
+<td><b>E</b>:<br>Select Point</td>
+<td>Render a sphere corresponding to point where the selected object was clicked. Enable labeling of the selection point to see its global and local coordinates.</td>
+</tr>
+<tr>
+<td><b>0 to 4</b>:<br>Geom group</td>
+<td>Toggle geom visualization group. The group that each geom belongs to is defined in the model. This is very useful for showing and hiding parts of complex model, but the model has to be prepared accordingly, by defining suitable geom groups.</td>
+</tr>
+<tr>
+<td><b>Shift + 0 to 4</b>:<br>Site group</td>
+<td>Same as above but for site groups rather than geom groups.</td>
+</tr>
+</table>
+
+
+

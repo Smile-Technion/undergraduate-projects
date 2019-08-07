@@ -1,0 +1,104 @@
+<h3>3D mouse</h3>
+
+<p>
+The SpaceNavigator 3D mouse can be used to apply 3D forces and 3D torques to selected objects. The sensitivity can be adjusted form the Settings/Sim dialog. The translation and rotation components can enabled independently - from the dialog or by pressing the two buttons on the SpaceNavigator. 
+
+<br><br>
+
+The resulting forces have no effect when the simulation is paused, or when the selected body is static (note that mocap bodies are static from the viewpoint of the simulator). Rendering of the applied forces is turned off by default, but can be enabled from the Settings/Render dialog.
+</p>
+
+
+<h3>Regular mouse</h3>
+
+<p>
+The mouse can be used to manipulate the camera/view, or the selected object. Object manipulation is enabled by holding Ctrl at the onset of mouse drag. The effects of the left and right buttons can be swapped by holding Alt.
+<p>
+
+<h4>Camera control</h4>
+
+<p>
+MuJoCo can use three types of cameras to render the model:<br>
+
+<dl>
+<dt><b>fixed camera</b></dt>
+<dd>defined in the model; cannot be adjusted at runtime (but can move with a body if it is attached to a body in the model)</dd>
+<dt><b>head camera</b></dt>
+<dd>position and orientation controlled by motion capture; tilt, offset and scaling can be adjusted with the mouse</dd>
+<dt><b>free camera</b></dt>
+<dd>freely adjustable camera, defined by a LookAt point, azimuth, elevation and distance</dd>
+</dl>
+
+The Head Camera tool enables the head camera. When this tool is disabled, the camera selection box in the Settings/Render dialog is used to choose between free or fixed cameras.
+
+<br><br>
+
+The mouse commands for camera control are:
+
+<br><br>
+
+<table border="1" valign="top">
+<th align="left">Action</th>
+<th align="left">Effect</th>
+<tr>
+<td>Left Drag</td>
+<td>Rotate the camera around the (hidden) LookAt point. The mouse can adjusts the azimuth and elevation.</td>
+</tr>
+<tr>
+<td>Right Drag</td>
+<td>Move the view up and down. This is implemented by moving the LookAt point, without changing the azimuth, elevation or distance.</td>
+</tr>
+<tr>
+<td>Left-and-Right Drag<br>or Shift+Right Drag</td>
+<td>Move the view in the horizontal (XY) plane.</td>
+</tr>
+<tr>
+<td>Scroll Wheel<br>or Middle Drag</td>
+<td>Zoom in and out. This changes the camera distance to the LookAt point.</td>
+</tr>
+<tr>
+<td>Right Double-Click</td>
+<td>Center the view on the clicked 3D point.</td>
+</tr>
+<tr>
+<td>Ctrl + Right Double-Click</td>
+<td>Center the view on the clicked body, and then start tracking the body with the free camera. Press <strong>Esc</strong> to stop tracking.</td>
+</tr>
+</table>
+
+</p>
+
+
+
+<h4>Object selection and perturbations</h4>
+
+<p>
+Bodies can be selected and pushed around interactively. When the simulation is running this is done via spring forces. When it is paused the mouse directly moves the kinematic tree to which the selected body belongs. The corresponding mouse actions are:
+
+<br><br>
+
+<table border="1" valign="top">
+<th align="left">Action</th>
+<th align="left">Effect</th>
+<tr>
+<td>Left Double-Click</td>
+<td>Select a body. The body starts glowing. If the action is over the background the selection is cleared.</td>
+</tr>
+<tr>
+<td>Ctrl + Right Drag</td>
+<td>Connect the mouse cursor and the selected body with a string which applies force on the body. The mouse moves the free end of the string in the horizontal plane.</td>
+</tr>
+<tr>
+<td>Ctrl + Left-And-Right Drag<br>or Ctrl + Shift + Right Drag</td>
+<td>Same as above but the mouse moves the free end of the string in the horizontal plane.</td>
+</tr>
+<tr>
+<td>Ctrl + Left Drag</td>
+<td>Apply torques to the selected body. A red box is shown and is rotated with the mouse. Mujoco applies torques attempting to aling the body with this box.</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Left Drag</td>
+<td>Same as above but the set of rotation axes is different.</td>
+</tr>
+</table>
+<br>
