@@ -1,10 +1,3 @@
----
-layout: page
-mathjax: true
-permalink: /linear_re/
----
-
-$\hat{Y}_i=\omega_1 x_i+\omega_0 ~ $ trying to fit $ \omega_1,\omega_0$ 
 # graduate-projects
 
 #### List of files by reading order:
