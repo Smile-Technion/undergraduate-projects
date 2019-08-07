@@ -21,3 +21,8 @@ Try to open and run graduate-projects\mujoco_files\simple_example\Mujoco_py_exam
 #### Latex examples:
 
 Latex.md is an example on how to write latex in github .md files. 
+
+
+#### Learning python:
+
+You can take the course https://www.coursera.org/learn/python-for-applied-data-science-ai?action=enroll in coursera. The course should take around 10 hours to finish. you can take the course for free without exams or pay and get certificate(which you can put on your linkedin acount). When you sign you have 1 week to cancel your sighning which is more than enough to finish the course. 
