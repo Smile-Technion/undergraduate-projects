@@ -1,8 +1,4 @@
----
-layout: default
-mathjax: true
-permalink: /linear_re/
----
+
 
 <hr />
 
