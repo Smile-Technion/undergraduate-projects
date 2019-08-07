@@ -3,7 +3,7 @@
 #### List of files by reading order:
 
 * Katbar_tutorials
-* Try mujoco good example of how to extract dynamics parameters from a known robot in mujoco
+* mujoco_files\simple_example good example of how to extract dynamics parameters from a known robot in mujoco
 * Impedance_control_papers
 
 
