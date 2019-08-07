@@ -17,3 +17,7 @@
 
 #### After installing:
 Try to open and run graduate-projects\mujoco_files\simple_example\Mujoco_py_example.py using pycharm and see if you get code_video.mp4.
+
+#### Latex examples:
+
+Latex.md is an example on how to write latex in github .md files. 
