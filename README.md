@@ -13,7 +13,7 @@
 * Anaconda- https://www.anaconda.com/
 * Pycharm-https://www.jetbrains.com/pycharm/ 
 * Mujoco-py- working with python in mujoco https://github.com/openai/mujoco-py if you are windows users you need to install visual studio:
-	* Visual C++ Build Tools - https://stackoverflow.com/a/45918595/7448860
+	* Visual C++ Build Tools - https://download.microsoft.com/download/5/f/7/5f7acaeb-8363-451f-9425-68a90f98b238/visualcppbuildtools_full.exe?fixForIE=.exe
 
 #### After installing:
 Try to open and run graduate-projects\mujoco_files\simple_example\Mujoco_py_example.py using pycharm and see if you get code_video.mp4.
