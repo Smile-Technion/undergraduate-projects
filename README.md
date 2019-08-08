@@ -18,8 +18,9 @@
 #### After installing:
 Try to open and run graduate-projects\mujoco_files\simple_example\Mujoco_py_example.py using pycharm and see if you get code_video.mp4.
 
-#### Latex examples:
+#### Latex viewing/writing:
 
+To view Latex in github you should install this chrome extension: https://chrome.google.com/webstore/detail/mathjax-plugin-for-github/ioemnmodlmafdkllaclgeombjnmnbima
 Latex.md is an example on how to write latex in github .md files. 
 
 
