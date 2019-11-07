@@ -1,13 +1,13 @@
 clear all; close all; clc
 
 l1 = 2;
-l2 = 1;
+l2 = 2;
 dt = 0.05;     % time diff
-t = dt:dt:10;   % time vector
+t = dt:dt:6.5;   % time vector
 
 % circle
-px = 1.5*cos(t);    % required x position 
-py = 1.5*sin(t);    % required y position
+px = 1.5+cos(t);    % required x position 
+py = -1.5+sin(t);    % required y position
 % plot(px,py)     % check path
 
 % % arm extention
@@ -46,6 +46,9 @@ Grip = zeros(2,length(t));  % initiate grip position log vector
 hold on
 grid on
 
+v = VideoWriter('video1.avi');
+open(v)
+
 for k=1:length(t)
     
     Grip(1,k) = l2_line_end(1,k); % log grip position
@@ -56,6 +59,10 @@ for k=1:length(t)
     set(hMark,'XData',Grip(1,k),'YData',Grip(2,k));
     drawnow
     xlim(hAxes,[-3 3]);
-    
+    frame = getframe(gcf);
+    writeVideo(v,frame);
+    plot(Grip(1,:), Grip(2, :), '*g')
+   
 end
-     
+
+close(v)
