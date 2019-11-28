@@ -1,7 +1,7 @@
 function plot_Robot(X1 ,l1, l2, theta1, theta2, X_limit, Y_limit, video)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-
+% X1 = X1';
 %create figure elements
 hFig = figure(1);
 hAxes = axes(hFig);
@@ -33,7 +33,7 @@ if video == 1
 end
 
 
-for k=1:length(X1(1,:))
+for k=1:length(X1(2,:))
     
     Grip(1,k) = l2_line_end(1,k); % log grip position
     Grip(2,k) = l2_line_end(2,k);

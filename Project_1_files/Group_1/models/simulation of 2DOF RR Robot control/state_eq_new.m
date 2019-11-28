@@ -14,12 +14,13 @@ Dynamics = H\(-C*dq -G + tau_interp);
 
 dydt = [q; Dynamics];
 
-% tau_interp = [interp1(t,tau(1,:),tm);interp1(t,tau(2,:),tm)];
-% % plot(t,tau(1,:),'o',t,interp1(t,tau(1,:),tm),':.');
-% % hold on
+
+% tau_interp = [interp1(our_time,tau(1,:),t);interp1(our_time,tau(2,:),t)];
+% plot(t,tau(1,:),'o',t,interp1(t,tau(1,:),tm),':.');
+% hold on
 % 
-% q = [X(1);X(3)];
-% dq = [X(2);X(4)];
+% q = [y(1);y(3)];
+% dq = [y(2);y(4)];
 % 
 % H = double(dynamics_H_new(q));
 % C = double(dynamics_C_new(q,dq));
@@ -27,6 +28,6 @@ dydt = [q; Dynamics];
 % 
 % ddq = inv(H)*(-C*dq-G+tau_interp);
 % 
-% Xdot = [dq(1);ddq(1);dq(2);ddq(2)];
+% dydt = [dq(1);ddq(1);dq(2);ddq(2)];
 % % Xdot=double(Xdot);
 end
