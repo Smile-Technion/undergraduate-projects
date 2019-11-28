@@ -1,4 +1,4 @@
-function plot_Robot(t,l1, l2, theta1, theta2, X_limit, Y_limit, video)
+function plot_Robot(X1 ,l1, l2, theta1, theta2, X_limit, Y_limit, video)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -23,7 +23,7 @@ s12 = sin(theta1+theta2);
 l1_line_end = [l1.*c1; l1.*s1];
 l2_line_end = [l2.*c12 ; l2.*s12]+l1_line_end;
 
-Grip = zeros(2,length(t));  % initiate grip position log vector
+Grip = zeros(2,length(X1(1,:)));  % initiate grip position log vector
 hold on
 grid on
 
@@ -33,7 +33,7 @@ if video == 1
 end
 
 
-for k=1:length(t)
+for k=1:length(X1(1,:))
     
     Grip(1,k) = l2_line_end(1,k); % log grip position
     Grip(2,k) = l2_line_end(2,k);
@@ -42,7 +42,7 @@ for k=1:length(t)
     set(hArm2,'XData',[l1_line_end(1,k), l2_line_end(1,k)],'YData',[l1_line_end(2,k) , l2_line_end(2,k)]);
     set(hMark,'XData',Grip(1,k),'YData',Grip(2,k));
     drawnow
-    xlim(hAxes,[-3 3]);
+    xlim(hAxes,[-X_limit X_limit]);
     
     if video == 1
         frame = getframe(gcf);
@@ -53,7 +53,9 @@ for k=1:length(t)
    
 end
 
-close(v)
+if video == 1
+    close(v)
+end
 
 end
 

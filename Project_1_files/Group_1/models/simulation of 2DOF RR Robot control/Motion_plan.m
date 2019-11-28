@@ -1,6 +1,5 @@
 function [X,Y, X_dot, Y_dot, X_2dot, Y_2dot] = Motion_plan(X0,Xf,t)
-%UNTITLED5 Summary of this function goes here
-%   Detailed explanation goes here
+
 T = t(end);
 a0 = X0(1);
 a3 = 10*(Xf(1)- X0(1))/ T^3 ;
