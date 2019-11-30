@@ -14,8 +14,8 @@ m2 = 2;
 %  - l2.*sin(t1 + t2).*(dt1 + dt2) - l1.*sin(t1).*dt1, -l2.*sin(t1 + t2).*(dt1 + dt2)];
 
 % define start and end position
-X0 = [2 2] ;
-Xf = [3 3] ;
+X0 = [1 3] ;
+Xf = [6 6] ;
 
 % build motion plan
 [X,Y, X_dot, Y_dot, X_2dot, Y_2dot] = Motion_plan(X0,Xf,t_v);
@@ -52,11 +52,11 @@ dq0 = dq_theoretic(:,1)';
 % dq0=[0 0];
 
 
-options = odeset('MaxStep',0.01);  % adjust solver options
+options = odeset('MaxStep',0.1);  % adjust solver options
 tau=double(tau);
 
 % solve for Tau
-[t,y] = ode45(@(t,y) state_eq_new(t,y,t_v,tau),t_v,[q0(1) q0(2) dq0(1) dq0(2)]', options);
+[t,y] = ode45(@(t,y) state_eq_new(t,y,t_v,tau),t_v,[q0(1) dq0(1) q0(2) dq0(2)]', options);
 
 figure()
 plot(t, y(:,1))
@@ -65,9 +65,9 @@ plot(t_v, q(1,:))
 legend('y','qd')
 
 figure()
-plot(t, y(:,3))
+plot(t, y(:,2))
 hold on
 plot(t_v, dq_theoretic(1,:))
 
-
-plot_Robot(y',l1,l2,y(:,1)',y(:,2)',10,10,0)
+% plot_Robot(q,l1,l2,q(1,:),q(2,:),10,10,0)
+plot_Robot(y',l1,l2,y(:,1)',y(:,3)',10,10,1)
