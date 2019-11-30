@@ -3,8 +3,8 @@ function [dydt]=state_eq_new(t,y, our_time,tau)
 
 tau_interp = [interp1(our_time,tau(1,:),t);interp1(our_time,tau(2,:),t)];
 
-q = [y(1); y(2)];
-dq = [y(3); y(4)];
+q = [y(1) ; y(2)];
+dq = [y(3) ; y(4)];
 
 H = double(dynamics_H_new(q));
 C = double(dynamics_C_new(q,dq));
@@ -12,7 +12,7 @@ G = double(dynamics_G_new(q));
 
 Dynamics = H\(-C*dq -G + tau_interp);
 
-dydt = [q; Dynamics];
+dydt = [dq ; Dynamics];
 
 
 % tau_interp = [interp1(our_time,tau(1,:),t);interp1(our_time,tau(2,:),t)];

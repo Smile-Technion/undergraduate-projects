@@ -1,6 +1,6 @@
 clear variables; close all; clc
 
-t_v = linspace(0,10,50);
+t_v = linspace(0,10,100);
 
 % Robot Definition
 l1 = 5;
@@ -9,12 +9,12 @@ m1 = 2;
 m2 = 2;
 
 % inverse Linear Jacobian
-inv_JL=@(t1,t2) [ -1./(l2.*sin(t1 + t2) + l1.*sin(t1)), -1./(l2.*sin(t1 + t2));  1./(l2.*cos(t1 + t2) + l1.*cos(t1)),  1./(l2.*cos(t1 + t2))];
-dJL=@(t1,t2,dt1,dt2) [ - l2.*cos(t1 + t2).*(dt1 + dt2) - l1.*cos(t1).*dt1, -l2.*cos(t1 + t2).*(dt1 + dt2);
- - l2.*sin(t1 + t2).*(dt1 + dt2) - l1.*sin(t1).*dt1, -l2.*sin(t1 + t2).*(dt1 + dt2)];
+% inv_JL=@(t1,t2) [ -1./(l2.*sin(t1 + t2) + l1.*sin(t1)), -1./(l2.*sin(t1 + t2));  1./(l2.*cos(t1 + t2) + l1.*cos(t1)),  1./(l2.*cos(t1 + t2))];
+% dJL=@(t1,t2,dt1,dt2) [ - l2.*cos(t1 + t2).*(dt1 + dt2) - l1.*cos(t1).*dt1, -l2.*cos(t1 + t2).*(dt1 + dt2);
+%  - l2.*sin(t1 + t2).*(dt1 + dt2) - l1.*sin(t1).*dt1, -l2.*sin(t1 + t2).*(dt1 + dt2)];
 
 % define start and end position
-X0 = [1 1] ;
+X0 = [2 2] ;
 Xf = [3 3] ;
 
 % build motion plan
@@ -31,8 +31,8 @@ ddq_theoretic = zeros(2, length(t_v));
 tau = zeros(2, length(t_v));
 
 for i = 1:length(t_v)
-    dq_theoretic(:,i)= inv_JL(q(1,i),q(2,i)) * q(:,i);
-    ddq_theoretic(:,i)= inv_JL(q(1,i),q(2,i))*(a(i)-dJL(q(1,i),q(2,i),dq_theoretic(1,i),dq_theoretic(2,i))*dq_theoretic(:,i));
+    dq_theoretic(:,i)= Jacobian_inv(l1,l2,q(:,i)) * v(:,i);
+    ddq_theoretic(:,i)= Jacobian_inv(l1,l2,q(:,i))*(a(:,i)-Jacobian_dot(l1,l2,q(:,i),dq_theoretic(:,i))*dq_theoretic(:,i));
     tau(:,i)= dynamics_H_new(q(:,i)) * ddq_theoretic(:,i) + dynamics_C_new(q(:,i),dq_theoretic(:,i))* dq_theoretic(:,i)+ dynamics_G_new(q(:,i));
 end
 
@@ -51,20 +51,23 @@ dq0 = dq_theoretic(:,1)';
 % q0=[0 0];
 % dq0=[0 0];
 
-options = odeset('MaxStep',0.1);  % adjust solver options
+
+options = odeset('MaxStep',0.01);  % adjust solver options
 tau=double(tau);
 
 % solve for Tau
-[t,y] = ode45(@(t,y) state_eq_new(t,y,t_v,tau),[0 10],[q0(1) q0(2) dq0(1) dq0(2)]', options);
+[t,y] = ode45(@(t,y) state_eq_new(t,y,t_v,tau),t_v,[q0(1) q0(2) dq0(1) dq0(2)]', options);
 
 figure()
 plot(t, y(:,1))
 hold on
 plot(t_v, q(1,:))
+legend('y','qd')
 
 figure()
 plot(t, y(:,3))
 hold on
 plot(t_v, dq_theoretic(1,:))
 
-% plot_Robot(y',l1,l2,y(:,1)',y(:,2)',10,10,0)
+
+plot_Robot(y',l1,l2,y(:,1)',y(:,2)',10,10,0)

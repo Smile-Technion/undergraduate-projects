@@ -1,11 +1,11 @@
-function [] = simbolic_dimanic()
+function [Jl] = simbolic_dimanic()
 global m1 m2 l1 l2
-m1=2;
-m2=2;
-l1 = 2;
-l2 = 2;
+% m1=2;
+% m2=2;
+% l1 = 5;
+% l2 = 5;
 
-syms g  m3 m4 t1 t2 d4 t1_dot t2_dot d4_dot  l3 l4 l5 dt1 dt2 %l1 l2 m1 m2
+syms g  m3 m4 t1 t2 d4 t1_dot t2_dot d4_dot  l3 l4 l5 dt1 dt2 l1 l2 m1 m2
 syms t1_dot2 t2_dot2 d4_dot2 f1 f2 f3 M1 M2 M3
 A01=[cos(t1) -sin(t1) 0 0; sin(t1) cos(t1) 0 0 ; 0 0 1 0 ; 0 0 0 1];
 A12=[cos(t2) -sin(t2) 0 l1 ; sin(t2) cos(t2) 0 0 ; 0 0 1 0 ; 0 0 0 1];
@@ -71,7 +71,7 @@ end
 %% G
 
 G=sym(zeros(2,1));
-g=[0 ; 0 ; -g];
+g=[0 ; -g ; 0];
 for n=1 : 2
     G=G-m(n)*(JLw(:,:,n).')*g;
 end
