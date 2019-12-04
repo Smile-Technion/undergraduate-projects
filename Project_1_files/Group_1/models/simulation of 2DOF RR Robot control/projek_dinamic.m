@@ -14,7 +14,7 @@ m2 = 2;
 %  - l2.*sin(t1 + t2).*(dt1 + dt2) - l1.*sin(t1).*dt1, -l2.*sin(t1 + t2).*(dt1 + dt2)];
 
 % define start and end position
-X0 = [1 3] ;
+X0 = [2 2] ;
 Xf = [6 6] ;
 
 % build motion plan
@@ -56,13 +56,24 @@ options = odeset('MaxStep',0.1);  % adjust solver options
 tau=double(tau);
 
 % solve for Tau
+% [t,y] = ode45(@(t,y) state_eq_new(t,y,t_v,tau),t_v,[q0(1) dq0(1) q0(2) dq0(2)]', options);
+
+% solve for Tau and law control  tau = G-Kp*(q-qd)-Kd*(dq-dqd)
 [t,y] = ode45(@(t,y) state_eq_new(t,y,t_v,tau),t_v,[q0(1) dq0(1) q0(2) dq0(2)]', options);
 
+% Compares desirable and relayed values
 figure()
 plot(t, y(:,1))
 hold on
 plot(t_v, q(1,:))
-legend('y','qd')
+legend('y','qd1')
+
+figure()
+plot(t, y(:,3))
+hold on
+plot(t_v, q(2,:))
+legend('y','qd2')
+
 
 figure()
 plot(t, y(:,2))
