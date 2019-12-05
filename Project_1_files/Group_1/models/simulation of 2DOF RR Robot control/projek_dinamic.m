@@ -5,7 +5,7 @@ global kp kd kp1 kp2 kd1 kd2
 kp1 = 70;  kp2 = 70;  kd1 = 100;  kd2 = 100;
 tau = [0 0]';
 
-t_Build = linspace(0,10,10000);
+t_Build = linspace(0,10,1000);
 
 % Robot Definition
 l1 = 5;
@@ -15,7 +15,7 @@ m2 = 2;
 
 % define start and end position
 X0 = [2 2] ;
-Xf = [6 6] ;
+Xf = [-6 6] ;
 
 % build motion plan
 [X,Y, X_dot, Y_dot, X_2dot, Y_2dot] = Motion_plan(X0,Xf,t_Build);
@@ -55,14 +55,16 @@ dq0 = dq_theoretic(:,1)';
 % options = odeset('MaxStep',0.1);  % adjust solver options  (, options)
 tau_theoretic=double(tau_theoretic);
 
-% solve for Tau
+% solve for Tau without control
 % [t,y] = ode45(@(t,y) state_eq_new(t,y,t_Build,tau),t_Build,[q0(1) dq0(1) q0(2) dq0(2)]');
 
-% solve for Tau and law control  tau = G-Kp*(q-qd)-Kd*(dq-dqd)
-% options = odeset('OutputFcn', @(status)myOutPutFcn(t,y,flag,t_Build, q_theoretic, dq_theoretic));
-
-options = odeset('OutputFcn',@myOutPutFcn,'MaxStep',2, 'Refine',1);
+% solve for Tau and law control : tau = G-Kp*(q-qd)-Kd*(dq-dqd)
+options = odeset('OutputFcn',@myOutPutFcnPD,'MaxStep',2, 'Refine',1);
 [t,y] = ode45(@(t,y) state_eq_control(t,y,t_Build,q_theoretic,dq_theoretic,ddq_theoretic),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]' , options);
+
+% Impedance Controller
+% options = odeset('OutputFcn',@myOutPutFcn_IM,'MaxStep',2, 'Refine',1);
+% [t,y] = ode45(@(t,y) state_eq_control(t,y,t_Build,q_theoretic,dq_theoretic,ddq_theoretic),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]' , options);
 
 % plot Robot Arm
 plot_Robot(y',l1,l2,y(:,1)',y(:,3)',10,10, 0)

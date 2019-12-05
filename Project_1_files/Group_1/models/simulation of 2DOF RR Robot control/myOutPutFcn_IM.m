@@ -1,4 +1,4 @@
-function status = myOutPutFcn(t,y,flag)
+function status = myOutPutFcn_IM(t,y,flag)
 global tau t_Build q_theoretic dq_theoretic
 global kp kd kp1 kp2 kd1 kd2
 persistent count
@@ -19,8 +19,8 @@ switch flag
         dq=[y(2);y(4)];
         
         % dynamics matrix
-%         H = double(dynamics_H_new(q));
-%         C = double(dynamics_C_new(q,dq));
+        H = double(dynamics_H_new(q));
+        C = double(dynamics_C_new(q,dq));
         G = double(dynamics_G_new(q));
         
         % controle law
