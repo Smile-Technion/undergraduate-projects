@@ -1,9 +1,4 @@
-function [Jl] = simbolic_dimanic()
-global m1 m2 l1 l2
-% m1=2;
-% m2=2;
-% l1 = 5;
-% l2 = 5;
+clear variables;clc
 
 syms g  m3 m4 t1 t2 d4 t1_dot t2_dot d4_dot  l3 l4 l5 dt1 dt2 l1 l2 m1 m2
 syms t1_dot2 t2_dot2 d4_dot2 f1 f2 f3 M1 M2 M3
@@ -71,7 +66,7 @@ end
 %% G
 
 G=sym(zeros(2,1));
-g=[0 ; -g ; 0];
+g=[0 ; 0 ; -g];
 for n=1 : 2
     G=G-m(n)*(JLw(:,:,n).')*g;
 end
@@ -88,6 +83,3 @@ f(5,1)=M2;
 f(6,1)=M3;
 JaTool=[0 0; 0 0 ; 1 1];
 tau=H*q_dot2+C*q_dot+G-([JlTool ; JaTool].')*f;
-
-end
-

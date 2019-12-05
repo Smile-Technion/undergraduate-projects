@@ -3,7 +3,7 @@ function plot_Robot(X1 ,l1, l2, theta1, theta2, X_limit, Y_limit, video)
 %   Detailed explanation goes here
 % X1 = X1';
 %create figure elements
-hFig = figure(1);
+hFig = figure();
 hAxes = axes(hFig);
 hold on
 xlim(hAxes,[-X_limit X_limit]);
