@@ -2,10 +2,10 @@ clear variables; close all; clc
 
 global tau t_Build q_theoretic dq_theoretic
 global kp kd kp1 kp2 kd1 kd2
-kp1 = 10;  kp2 = 10;  kd1 = 0.5;  kd2 = 0.5;
+kp1 = 70;  kp2 = 70;  kd1 = 100;  kd2 = 100;
 tau = [0 0]';
 
-t_Build = linspace(0,10,100);
+t_Build = linspace(0,10,10000);
 
 % Robot Definition
 l1 = 5;
@@ -61,14 +61,14 @@ tau_theoretic=double(tau_theoretic);
 % solve for Tau and law control  tau = G-Kp*(q-qd)-Kd*(dq-dqd)
 % options = odeset('OutputFcn', @(status)myOutPutFcn(t,y,flag,t_Build, q_theoretic, dq_theoretic));
 
-options = odeset('OutputFcn',@myOutPutFcn,'MaxStep',0.1);
-[t,y] = ode45(@(t,y) state_eq_control(t,y,t_Build,q_theoretic,dq_theoretic,ddq_theoretic),t_Build,[q0(1) dq0(1) q0(2) dq0(2)]' , options);
+options = odeset('OutputFcn',@myOutPutFcn,'MaxStep',2, 'Refine',1);
+[t,y] = ode45(@(t,y) state_eq_control(t,y,t_Build,q_theoretic,dq_theoretic,ddq_theoretic),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]' , options);
 
 % plot Robot Arm
 plot_Robot(y',l1,l2,y(:,1)',y(:,3)',10,10, 0)
 
+%% plot qoints 
 
-%%
 % Compares desirable and relayed values
 % figure()
 % plot(t, y(:,1))
@@ -87,6 +87,3 @@ plot_Robot(y',l1,l2,y(:,1)',y(:,3)',10,10, 0)
 % plot(t, y(:,2))
 % hold on
 % plot(t_Build, dq_theoretic(1,:))
-% 
-% % plot_Robot(q,l1,l2,q(1,:),q(2,:),10,10,0)
-

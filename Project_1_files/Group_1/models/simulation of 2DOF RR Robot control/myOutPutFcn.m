@@ -1,13 +1,15 @@
 function status = myOutPutFcn(t,y,flag)
 global tau t_Build q_theoretic dq_theoretic
 global kp kd kp1 kp2 kd1 kd2
+persistent count
 
 switch flag
     case 'init'
         % parameter of the controle law
         kp = [kp1 0; 0 kp2];
         kd = [kd1 0; 0 kd2];
-%         print('Start...')
+        disp('Start...')
+        count = 1;
        
     case ''
         q_d = interp1(t_Build,q_theoretic',t(end))';
@@ -23,9 +25,12 @@ switch flag
         
         % controle law
         tau = G - kp*(q-q_d)-kd*(dq-dqd);
+        count = count +1; 
         
     case 'done'
-%         print('done')
+        disp('Number of Controller Counts:')
+        disp(count)
+        disp('done.')
 end
 
 status = 0;
