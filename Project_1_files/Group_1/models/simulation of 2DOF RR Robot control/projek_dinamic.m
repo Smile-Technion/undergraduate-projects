@@ -15,7 +15,7 @@ m2 = 2;
 
 % define start and end position
 X0 = [2 2] ;
-Xf = [6 6] ;
+Xf = [-6 6] ;
 
 % build motion plan
 [X,Y, X_dot, Y_dot, X_2dot, Y_2dot] = Motion_plan(X0,Xf,t_Build);
@@ -65,7 +65,7 @@ options = odeset('OutputFcn',@myOutPutFcn,'MaxStep',2, 'Refine',1);
 [t,y] = ode45(@(t,y) state_eq_control(t,y,t_Build,q_theoretic,dq_theoretic,ddq_theoretic),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]' , options);
 
 % plot Robot Arm
-plot_Robot(y',l1,l2,y(:,1)',y(:,3)',10,10, 0)
+plot_Robot(y',l1,l2,y(:,1)',y(:,3)',10,10, 1)
 
 %% plot qoints 
 
