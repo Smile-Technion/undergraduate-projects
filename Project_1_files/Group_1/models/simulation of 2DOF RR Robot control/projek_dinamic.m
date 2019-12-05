@@ -59,7 +59,7 @@ tau=double(tau);
 % [t,y] = ode45(@(t,y) state_eq_new(t,y,t_v,tau),t_v,[q0(1) dq0(1) q0(2) dq0(2)]', options);
 
 % solve for Tau and law control  tau = G-Kp*(q-qd)-Kd*(dq-dqd)
-[t,y] = ode45(@(t,y) state_eq_new(t,y,t_v,tau),t_v,[q0(1) dq0(1) q0(2) dq0(2)]', options);
+[t,y] = ode45(@(t,y) state_eq_control(t,y,t_v,q,dq_theoretic,ddq_theoretic),t_v,[q0(1) dq0(1) q0(2) dq0(2)]', options);
 
 % Compares desirable and relayed values
 figure()
