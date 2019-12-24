@@ -1,7 +1,7 @@
 function [C] = dynamics_C_new(q,qdot)
 
 global m1 m2 l1 l2
-m1=2;
+m1=20;
 m2=2;
 
 l1 = 2;

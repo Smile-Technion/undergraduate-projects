@@ -1,7 +1,7 @@
-clc
-clear all
+clc; clear variables; close all
+
 global m1 m2 l1 l2
-m1=2;
+m1=20;
 m2=2;
 l1 = 2;
 l2 = 2;
@@ -100,7 +100,7 @@ tau=H*q_dot2+C*q_dot+G-([JlTool ; JaTool].')*f;
 
 % tau=zeros(1,length(t_vec));
 %%
-t_vec=linspace(0,10,500);
+t_vec=linspace(0,20,500);
 tau=[zeros(1,length(t_vec)); 1*ones(1,length(t_vec))];
 q0=[0 0];
 dq0=[0 0];
@@ -114,26 +114,6 @@ options=odeset('MaxStep',0.1);
 dt = 0.05;     % time diff
 t = dt:dt:6.5;   % time vector
 
-% circle
-% px = 1.5+cos(t);    % required x position 
-% py = -1.5+sin(t);    % required y position
-% plot(px,py)     % check path
-
-% % arm extention
-% px = linspace(1/sqrt(2), 3/sqrt(2), length(t));    % required x position 
-% py = linspace(1/sqrt(2), 3/sqrt(2), length(t));    % required y position
-
-%inverse kinematics
-% c2 = (px.^2 + py.^2 - l1^2 - l2^2)./(2*l1*l2) ; 
-% s2 = sqrt(1-c2.^2);
-% theta2 = atan2(s2, c2);
-% 
-% k1 = l1+l2*c2;
-% k2 = l2*s2;
-% 
-% c1 = (k1.*px + k2.*py)./ (k1.^2+k2.^2) ;   
-% s1 = (-k2.*px + k1.*py)./ (k1.^2+k2.^2) ;
-%  theta1 = atan2(s1, c1);
 
 theta1=X(:,1)';
 theta2=X(:,3)';
@@ -147,8 +127,8 @@ s2=sin(theta2);
 hFig = figure(1);
 hAxes = axes(hFig);
 hold on
-xlim(hAxes,[-4 4]);
-ylim(hAxes,[-4 4]);
+xlim(hAxes,[-5 5]);
+ylim(hAxes,[-5 5]);
 grid on
 axis equal
 hMark = plot(nan,nan,'ro','MarkerSize',7);
@@ -172,7 +152,7 @@ for k=1:length(X(:,1))
     set(hArm2,'XData',[l1_line_end(1,k), l2_line_end(1,k)],'YData',[l1_line_end(2,k) , l2_line_end(2,k)]);
     set(hMark,'XData',Grip(1,k),'YData',Grip(2,k));
     drawnow
-    xlim(hAxes,[-4 4]);
+    xlim(hAxes,[-5 5]);
 
 %     plot(Grip(1,:), Grip(2, :), '*g')
    
