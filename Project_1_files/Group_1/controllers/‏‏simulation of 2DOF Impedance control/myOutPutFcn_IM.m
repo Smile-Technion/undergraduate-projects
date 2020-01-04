@@ -2,7 +2,7 @@ function status = myOutPutFcn_IM(t,y,flag)
 
 global tau tau_max
 global t_Build
-global kp kd kp1 kp2 kd1 kd2
+global kp kd kp1 kp2 kd1 kd2 Wall_d
 global l1 l2 X_d a dt
 global Wall_x F_in F_in_x Wall_k Xm_check X0_check
 global Km Bm Mm
@@ -34,16 +34,6 @@ switch flag
         
         h = C*dq+G;
         
-        % Wall simulation
-        Griper_position = Forword_kinematics(q(1),q(2), l1, l2);
-        if Griper_position(1) <= Wall_x
-            F_in_x = 0;
-        elseif Griper_position(1) > Wall_x
-            F_in_x = abs(Wall_x - Griper_position(1))* Wall_k ;
-        end
-        F_in = [F_in_x ;0];
-        JL_T = Jacobian_L(q(1),q(2), l1, l2).';
-        
         % solve for Xm
         % initial conditions
         [Xim0_x, Xim0_y] = Forword_kinematics(q(1),q(2),l1,l2);
@@ -52,6 +42,18 @@ switch flag
         Xim0_dot_y = Xim0_dot(2);
         X0 = interp1(t_Build, X_d(1:2,:)' ,t(end))';
         X0_dot = interp1(t_Build, X_d(3:4,:)' ,t(end))';
+        
+        % Wall simulation
+        Griper_position = Forword_kinematics(q(1),q(2), l1, l2);
+        if Griper_position(1) <= Wall_x
+            F_in_x = 0;
+        elseif Griper_position(1) > Wall_x
+            F_in_x = abs(Wall_x - Griper_position(1))* Wall_k + Xim0_dot_x*Wall_d;
+        end
+        F_in = [F_in_x ;0];
+        JL_T = Jacobian_L(q(1),q(2), l1, l2).';
+        
+        
         
         % solve Impedance Model
         options = odeset('MaxStep',1 ,'Refine',10 );  %    

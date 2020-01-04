@@ -2,18 +2,22 @@ clear variables; close all; clc
 global tau tau_max
 global t_Build q_theoretic dq_theoretic ddq_theoretic
 global kp kd kp1 kp2 kd1 kd2
-global l1 l2 m1 m2 X0 Xf X_d
+global l1 l2 m1 m2 X0 Xf X_d Wall_d
 global Wall_x F_in F_in_x Wall_k Xm_check X0_check
 global Km Bm Mm a
 
+addpath('functions')
+
 % --------Simulation Parameters -------------------
 
-Wall_x = 5;  % Define the position of the wall
-Wall_k = 150; % Define the stiffness of the wall
-Window_Limit_X = 10;
-Window_Limit_Y = 10;
+Wall_x = 5; % Define the position of the wall
+ 
+Wall_k = 1500; % Define the stiffness of the wall
+Wall_d = Wall_k/10 ;
+Window_Limit_X = 6;
+Window_Limit_Y = 6;
 Animation = true;
-Video_on = true;
+Video_on = false;
 Wall_on = true;
 
 % Robot Definition
@@ -88,7 +92,7 @@ tau_theoretic = double(tau_theoretic);
 % [t,y] = ode45(@(t,y) state_eq_control(t,y,t_Build,q_theoretic,dq_theoretic,ddq_theoretic),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]' , options);
 
 % Impedance Controller
-options = odeset('OutputFcn',@myOutPutFcn_IM,'MaxStep',2, 'Refine',1);
+options = odeset('OutputFcn',@myOutPutFcn_IM,'MaxStep',1e-2, 'Refine',1);
 [t,y] = ode45(@(t,y) state_eq_control(t,y),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]' , options);
 
 
@@ -96,6 +100,7 @@ options = odeset('OutputFcn',@myOutPutFcn_IM,'MaxStep',2, 'Refine',1);
 if Animation == 1
     plot_Robot(y',l1,l2,y(:,1)',y(:,3)',Window_Limit_X,Window_Limit_Y,Wall_on,Video_on)
 end
+
 
 % Check End Error
 [final_x, final_y] = Forword_kinematics(y(end,1),y(end,3),l1,l2);
@@ -120,3 +125,6 @@ plot(t, y(:,2))
 hold on
 plot(t_Build, dq_theoretic(1,:))
 legend('joint 1 actual speed','qd1')
+
+%% clean up
+rmpath('functions')
