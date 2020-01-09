@@ -1,11 +1,9 @@
 function [G] = dynamics_G_new(q)
-
+global g
 m1=2;
 m2=2;
 l1 = 5;
 l2 = 5;
-
-g = -9.81 ; 
 
 c1 = cos(q(1));
 c2 = cos(q(2));

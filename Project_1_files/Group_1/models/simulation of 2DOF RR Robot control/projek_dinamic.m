@@ -1,10 +1,10 @@
 clear variables; close all; clc
 
 global tau t_Build q_theoretic dq_theoretic
-global kp kd kp1 kp2 kd1 kd2
-kp1 = 70;  kp2 = 70;  kd1 = 100;  kd2 = 100;
+global kp kd kp1 kp2 kd1 kd2 g ddq_theoretic
+kp1 = 50;  kp2 = 50;  kd1 = 10;  kd2 = 10;
 tau = [0 0]';
-
+g = 9.8 ; 
 t_Build = linspace(0,10,1000);
 
 % Robot Definition
@@ -56,7 +56,7 @@ dq0 = dq_theoretic(:,1)';
 tau_theoretic=double(tau_theoretic);
 
 % solve for Tau without control
-% [t,y] = ode45(@(t,y) state_eq_new(t,y,t_Build,tau),t_Build,[q0(1) dq0(1) q0(2) dq0(2)]');
+%  [t,y] = ode45(@(t,y) state_eq_new(t,y,t_Build,tau),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]');
 
 % solve for Tau and law control : tau = G-Kp*(q-qd)-Kd*(dq-dqd)
 options = odeset('OutputFcn',@myOutPutFcnPD,'MaxStep',2, 'Refine',1);
@@ -66,10 +66,67 @@ options = odeset('OutputFcn',@myOutPutFcnPD,'MaxStep',2, 'Refine',1);
 % options = odeset('OutputFcn',@myOutPutFcn_IM,'MaxStep',2, 'Refine',1);
 % [t,y] = ode45(@(t,y) state_eq_control(t,y,t_Build,q_theoretic,dq_theoretic,ddq_theoretic),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]' , options);
 
-% plot Robot Arm
-plot_Robot(y',l1,l2,y(:,1)',y(:,3)',10,10, 0)
+% % plot Robot Arm
+%  plot_Robot(y',l1,l2,y(:,1)',y(:,3)',10,10, 0)
 
 %% plot qoints 
+
+figure()
+
+subplot(2,2,1);
+plot(t, y(:,1))
+hold on
+plot(t_Build, q_theoretic(1,:))
+legend('joint 1 actual Position','joint 1 wanted Positon')
+xlabel('Time [sec]')
+ylabel('joint 1 [rad]')
+
+subplot(2,2,2);
+plot(t, y(:,2))
+hold on
+plot(t_Build, dq_theoretic(1,:))
+legend('joint 1 actual speed','joint 1 wanted speed')
+xlabel('Time [sec]')
+ylabel('speed joint 1 [rad/sec]')
+
+subplot(2,2,3);
+plot(t_Build, q_theoretic(1,:)-interp1(t,y(:,1),t_Build))
+xlabel('Time [sec]')
+ylabel('Position rror [rad]')
+
+subplot(2,2,4);
+plot(t_Build, dq_theoretic(1,:)-interp1(t,y(:,2),t_Build))
+xlabel('Time [sec]')
+ylabel('speed error [rad/sec]')
+
+
+figure()
+
+subplot(2,2,1);
+plot(t, y(:,3))
+hold on
+plot(t_Build, q_theoretic(2,:))
+legend('joint 2 actual Position','joint 2 wanted Position')
+xlabel('Time [sec]')
+ylabel('joint 2 [rad]')
+
+subplot(2,2,2);
+plot(t, y(:,4))
+hold on
+plot(t_Build, dq_theoretic(2,:))
+legend('joint 2 actual speed','joint 2 wanted speed')
+xlabel('Time [sec]')
+ylabel('speed joint 2 [rad/sec]')
+
+subplot(2,2,3);
+plot(t_Build, q_theoretic(2,:)-interp1(t,y(:,3),t_Build))
+xlabel('Time [sec]')
+ylabel('Position rror [rad]')
+
+subplot(2,2,4);
+plot(t_Build, dq_theoretic(2,:)-interp1(t,y(:,4),t_Build))
+xlabel('Time [sec]')
+ylabel('speed error [rad/sec]')
 
 % Compares desirable and relayed values
 % figure()
@@ -89,3 +146,4 @@ plot_Robot(y',l1,l2,y(:,1)',y(:,3)',10,10, 0)
 % plot(t, y(:,2))
 % hold on
 % plot(t_Build, dq_theoretic(1,:))
+

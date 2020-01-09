@@ -1,5 +1,6 @@
 function [tau] = cont_tau(t,q,dq,t_vec,qd,dqd)
-
+global ddq_theoretic
+ddqd=ddq_theoretic;
 % parameter of the controle law
 kp1 = 10;
 kp2 = 10;
@@ -19,6 +20,6 @@ C = double(dynamics_C_new(q,dq));
 G = double(dynamics_G_new(q));
 
 % controle law
-tau = G-Kp*(q-qd)-Kd*(dq-dqd);
+tau = C*dq+G+H*(ddqd-Kp*(q-qd)-Kd*(dq-dqd));
 end
 
