@@ -1,7 +1,7 @@
 function status = myOutPutFcn_IM(t,y,flag)
 
 global tau tau_max
-global t_Build
+global t_Build Wall_on
 global kp kd kp1 kp2 kd1 kd2 Wall_d
 global l1 l2 X_d a dt
 global Wall_x F_in F_in_x Wall_k Xm_check X0_check
@@ -47,8 +47,10 @@ switch flag
         Griper_position = Forword_kinematics(q(1),q(2), l1, l2);
         if Griper_position(1) <= Wall_x
             F_in_x = 0;
-        elseif Griper_position(1) > Wall_x
+        elseif (Griper_position(1) > Wall_x) && Wall_on
             F_in_x = abs(Wall_x - Griper_position(1))* Wall_k + Xim0_dot_x*Wall_d;
+        else 
+            F_in_x = 0; 
         end
         F_in = [F_in_x ;0];
         JL_T = Jacobian_L(q(1),q(2), l1, l2).';

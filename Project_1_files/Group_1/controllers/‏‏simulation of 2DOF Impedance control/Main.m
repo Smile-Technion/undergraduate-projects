@@ -1,5 +1,5 @@
 clear variables; close all; clc
-global tau tau_max
+global tau tau_max Wall_on
 global t_Build q_theoretic dq_theoretic ddq_theoretic
 global kp kd kp1 kp2 kd1 kd2
 global l1 l2 m1 m2 X0 Xf X_d Wall_d
@@ -12,13 +12,13 @@ addpath('functions')
 
 Wall_x = 5; % Define the position of the wall
  
-Wall_k = 1500; % Define the stiffness of the wall
+Wall_k = 1600; % Define the stiffness of the wall
 Wall_d = Wall_k/10 ;
 Window_Limit_X = 6;
 Window_Limit_Y = 6;
-Animation = true;
+Animation = false;
 Video_on = false;
-Wall_on = true;
+Wall_on = false;
 
 % Robot Definition
 l1 = 5;  l2 = 5;  % Length of Links
@@ -89,7 +89,7 @@ tau_theoretic = double(tau_theoretic);
 
 % % solve for Tau and law control : tau = G-Kp*(q-qd)-Kd*(dq-dqd)
 % options = odeset('OutputFcn',@myOutPutFcnPD,'MaxStep',2, 'Refine',1);
-% [t,y] = ode45(@(t,y) state_eq_control(t,y,t_Build,q_theoretic,dq_theoretic,ddq_theoretic),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]' , options);
+% [t,y] = ode45(@(t,y) state_eq_control(t,y),[0 10],[q0(1) dq0(1) q0(2) dq0(2)]' , options);
 
 % Impedance Controller
 options = odeset('OutputFcn',@myOutPutFcn_IM,'MaxStep',1e-2, 'Refine',1);
@@ -98,7 +98,7 @@ options = odeset('OutputFcn',@myOutPutFcn_IM,'MaxStep',1e-2, 'Refine',1);
 
 % plot Robot Arm
 if Animation == 1
-    plot_Robot(y',l1,l2,y(:,1)',y(:,3)',Window_Limit_X,Window_Limit_Y,Wall_on,Video_on)
+     plot_Robot(y',l1,l2,y(:,1)',y(:,3)',Window_Limit_X,Window_Limit_Y,Wall_on,Video_on)
 end
 
 
@@ -107,24 +107,85 @@ end
 Error = X0_check(:,end) - [final_x; final_y]
 
 %% plot Joints
+
 figure()
+set(gcf,'color','w','PaperSize',[50 100])
+get(gcf)
+
+subplot(2,2,1);
 plot(t, y(:,1))
 hold on
 plot(t_Build, q_theoretic(1,:))
-legend('joint 1 actual Position','q1 wanted Positon')
+legend('joint 1 actual Position','joint 1 wanted Positon')
+xlabel('Time [sec]','fontsize',12)
+ylabel('joint 1 [rad]','fontsize',12)
+grid on
 
-figure()
-plot(t, y(:,3))
-hold on
-plot(t_Build, q_theoretic(2,:))
-legend('joint 2 actual Position','q2 wanted Position')
-
-
-figure()
+subplot(2,2,2);
 plot(t, y(:,2))
 hold on
 plot(t_Build, dq_theoretic(1,:))
-legend('joint 1 actual speed','qd1')
+legend('joint 1 actual speed','joint 1 wanted speed')
+xlabel('Time [sec]','fontsize',12)
+ylabel('speed joint 1 [rad/sec]','fontsize',12)
+grid on
+
+subplot(2,2,3);
+plot(t_Build, q_theoretic(1,:)-interp1(t,y(:,1),t_Build))
+xlabel('Time [sec]','fontsize',12)
+ylabel('Position rror [rad]','fontsize',12)
+grid on
+
+subplot(2,2,4);
+plot(t_Build, dq_theoretic(1,:)-interp1(t,y(:,2),t_Build))
+xlabel('Time [sec]','fontsize',12)
+ylabel('speed error [rad/sec]','fontsize',12)
+grid on
+
+figure()
+set(gcf,'color','w')
+
+
+subplot(2,2,1);
+plot(t, y(:,3))
+hold on
+plot(t_Build, q_theoretic(2,:))
+legend('joint 2 actual Position','joint 2 wanted Position','position','northwest')
+xlabel('Time [sec]','fontsize',12)
+ylabel('joint 2 [rad]','fontsize',12)
+grid on
+
+
+subplot(2,2,2);
+plot(t, y(:,4))
+hold on
+plot(t_Build, dq_theoretic(2,:))
+legend('joint 2 actual speed','joint 2 wanted speed','position','northwest')
+xlabel('Time [sec]','fontsize',12)
+ylabel('speed joint 2 [rad/sec]','fontsize',12)
+grid on
+
+subplot(2,2,3);
+plot(t_Build, q_theoretic(2,:)-interp1(t,y(:,3),t_Build))
+xlabel('Time [sec]','fontsize',12)
+ylabel('Position rror [rad]','fontsize',12)
+grid on
+
+subplot(2,2,4);
+plot(t_Build, dq_theoretic(2,:)-interp1(t,y(:,4),t_Build))
+xlabel('Time [sec]','fontsize',12)
+ylabel('speed error [rad/sec]','fontsize',12)
+grid on
+% 
+% figure()
+% plot(t, y(:,3))
+% hold on
+% plot(t_Build, q_theoretic(2,:))
+% legend('joint 2 actual Position','q2 wanted Position')
+% 
+% 
+% figure()
+
 
 %% clean up
 rmpath('functions')

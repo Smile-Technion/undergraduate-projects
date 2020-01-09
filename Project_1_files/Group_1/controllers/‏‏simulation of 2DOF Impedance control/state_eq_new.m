@@ -1,7 +1,8 @@
 function [dydt]=state_eq_new(t,y, our_time,tau)
 %t_vec and tau are pre-defined!
 
-tau_interp = [interp1(our_time,tau(1,:),t);interp1(our_time,tau(2,:),t)];
+% tau_interp = [interp1(our_time,tau(1,:),t);interp1(our_time,tau(2,:),t)];
+tau_interp=tau;
 
 q = [y(1) ; y(3)];
 dq = [y(2) ; y(4)];
