@@ -34,8 +34,8 @@ plot(X0(1),X0(2), 'ob', Xf(1),Xf(2), 'xb','MarkerSize', 8, 'Linewidth', 2)
 hold on
 
 % Plot Wall
-if abs(Wall) > 0.05
-    plot([Wall_x Wall_x], [-Y_limit Y_limit], '--r')
+if (abs(Wall) > 0.05 && Wall==1)
+     plot([Wall_x Wall_x], [-Y_limit Y_limit], '--r')
     hold on
 end
 

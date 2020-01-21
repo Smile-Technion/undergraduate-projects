@@ -16,9 +16,9 @@ Wall_k = 1600; % Define the stiffness of the wall
 Wall_d = Wall_k/10 ;
 Window_Limit_X = 6;
 Window_Limit_Y = 6;
-Animation = false;
-Video_on = false;
-Wall_on = false;
+Animation = 1;
+Video_on = 1;
+Wall_on = 0;
 
 % Robot Definition
 l1 = 5;  l2 = 5;  % Length of Links
