@@ -16,6 +16,8 @@ MujocoSim contains all the files required to run the UR5 simulation ,
 
 **RoboticsHelper.py**	-get data from mujoco - py simulation [inertia matrix,position,velocity,jacobian,find collision bodies]
 
-**Simulation.py**	-
+**Simulation.py**	- define simulation initial state, camera position load xml model
 
-**Task.py**
+**Task.py** - Go_to function which use closed loop control (regular or impedance),
+
+**path calc** - build polynomial path one dimension.
