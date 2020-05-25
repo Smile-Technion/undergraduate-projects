@@ -70,6 +70,7 @@ Download Mujoco200:**
     env.render()
     env.step(env.action_space.sample()) # take a random action
     
+troubleshooting installing mujoco-py ? use this git https://github.com/openai/mujoco-py
  **Matlab engine for python:**
 install matlab engine for python : 
    follow the instructions on this link -
