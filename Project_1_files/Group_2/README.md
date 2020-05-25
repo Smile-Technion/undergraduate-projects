@@ -1,6 +1,7 @@
 ## Project-elastic band Peg in a Hole(Nevo and Guy)
 
 **applications to be installed:**
+
   pycharm
   
   python 3.6
@@ -41,7 +42,7 @@ Download Mujoco200:**
    git clone https://github.com/openai/mujoco-py.git
 
    And then paste the lines below into your command window:
-   
+   '''
   cd mujoco-py/
   sudo apt-get update
   sudo apt-get install patchelf
@@ -51,7 +52,7 @@ Download Mujoco200:**
   sudo pip3 install -r requirements.dev.txt
   sudo python3 setup.py install
   sudo pip3 install gym
-
+'''
   test  :
   import gym
   env = gym.make('FetchPush-v1')
