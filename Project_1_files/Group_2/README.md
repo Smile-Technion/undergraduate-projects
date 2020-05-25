@@ -10,6 +10,7 @@ applications to be installed:
 
 Steps for installing and setup
 Download Mujoco200:
+
   1.Download mjpro200 linux from the MuJoCo site.https://www.roboti.us/index.html
   2.Unzip the downloaded mujoco200 directory into ~/.mujoco/mujoco200, and place your license key (the mjkey.txt file from your email) at       ~/.mujoco/mjkey.txt.
   *If you want to specify a nonstandard location for the key and package, use the env variables MUJOCO_PY_MJKEY_PATH and MUJOCO_PY_MUJOCO_PATH.
