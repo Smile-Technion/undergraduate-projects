@@ -42,21 +42,33 @@ Download Mujoco200:**
    git clone https://github.com/openai/mujoco-py.git
 
    And then paste the lines below into your command window:
-   '''
+   ```
   cd mujoco-py/
+  
   sudo apt-get update
+  
   sudo apt-get install patchelf
-  sudo apt-get install python3 python-dev python3-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev           libglew1.5 libglew-dev python-pip
+  
+  sudo apt-get install python3 python-dev python3-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev    
+  libglew1.5 libglew-dev python-pip
+  
   sudo apt-get install libgl1-mesa-dev libgl1-mesa-glx libosmesa6-dev python3-pip python3-numpy python3-scipy 
+  
   sudo pip3 install -r requirements.txt
+  
   sudo pip3 install -r requirements.dev.txt
+  
   sudo python3 setup.py install
+  
   sudo pip3 install gym
-'''
+```
   test  :
   import gym
+  
   env = gym.make('FetchPush-v1')
+  
   env.reset()
+  
   for _ in range(1000):
     env.render()
     env.step(env.action_space.sample()) # take a random action
