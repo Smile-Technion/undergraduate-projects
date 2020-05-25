@@ -63,6 +63,7 @@ Download Mujoco200:**
   sudo pip3 install gym
 ```
   test  :
+  
   import gym
   env = gym.make('FetchPush-v1')
   env.reset()
@@ -70,7 +71,9 @@ Download Mujoco200:**
     env.render()
     env.step(env.action_space.sample()) # take a random action
     
-troubleshooting installing mujoco-py ? use this git https://github.com/openai/mujoco-py
+troubleshooting installing mujoco-py ?
+use the following link
+git https://github.com/openai/mujoco-py
  **Matlab engine for python:**
 install matlab engine for python : 
    follow the instructions on this link -
