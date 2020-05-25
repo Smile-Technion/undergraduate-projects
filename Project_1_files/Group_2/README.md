@@ -1,5 +1,13 @@
 ## Project-elastic band Peg in a Hole(Nevo and Guy)
-#models
+##models
+applications to be installed:
+  pycharm
+  python 3.6
+  matlab R2014b or later
+  Mujoco 200
+  mujoco-py
+  
+
 Steps for installing and setup
 Download Mujoco200:
   1.Download mjpro200 linux from the MuJoCo site.https://www.roboti.us/index.html
@@ -8,9 +16,10 @@ Download Mujoco200:
   testing Mujoco install correct:
   cd ~/.mujoco/mjpro150/bin/./simulate
   
+Pycharm:
   install pycharm -https://www.jetbrains.com/pycharm/
   
-Mujoco-py installing:
+Mujoco-py:
   -Linux with Python 3.6+. See the Dockerfile for the canonical list of system dependencies.https://www.python.org/downloads/
   -OS X with Python 3.6+.
   install mujoco -py
@@ -22,6 +31,7 @@ Mujoco-py installing:
    git clone https://github.com/openai/mujoco-py.git
 
    And then paste the lines below into your command window:
+   
   cd mujoco-py/
   sudo apt-get update
   sudo apt-get install patchelf
@@ -44,6 +54,8 @@ Mujoco-py installing:
     install matlab engine for python : 
     follow the instructions on this link -
     https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html
+    
+    
     
   
   
