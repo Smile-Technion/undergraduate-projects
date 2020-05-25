@@ -1,21 +1,21 @@
 MujocoSim contains all the files required to run the UR5 simulation ,
 
-Controller.py  
+**Controller.py**  
 
-DataHandler.py  	
+**DataHandler.py**  	
 
-Enums.py  	
+**Enums.py**  	
 
-**Graph.py** 
+**Graph.py** plot data []
 
-**Impedance.py**  
+**Impedance.py**  -solve impedance equations , using ODE 
 
-**InverseKinematics.py**  	
+**InverseKinematics.py**  -call matalab engine to preform inversekinematics to get rotation and joints angles.	
 
 **PID.py**	- contain the functions which define the classic controller[P,PI,PID ] , and control effort
 
-RoboticsHelper.py	
+**RoboticsHelper.py**	-get data from mujoco - py simulation [inertia matrix,position,velocity,jacobian,find collision bodies]
 
-Simulation.py	
+**Simulation.py**	-
 
-Task.py
+**Task.py**
