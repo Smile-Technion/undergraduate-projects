@@ -1,10 +1,14 @@
 ## Project-elastic band Peg in a Hole(Nevo and Guy)
 
-**applications to be installed:
+**applications to be installed:**
   pycharm
+  
   python 3.6
+  
   matlab R2014b or later
+  
   Mujoco 200
+  
   mujoco-py**
   
 
@@ -12,8 +16,11 @@
 Download Mujoco200:**
 
   1.Download mjpro200 linux from the MuJoCo site.https://www.roboti.us/index.html
+  
   2.Unzip the downloaded mujoco200 directory into ~/.mujoco/mujoco200, and place your license key (the mjkey.txt file from your email) at       ~/.mujoco/mjkey.txt.
+  
   *If you want to specify a nonstandard location for the key and package, use the env variables MUJOCO_PY_MJKEY_PATH and MUJOCO_PY_MUJOCO_PATH.
+  
   testing Mujoco install correct:
   cd ~/.mujoco/mjpro150/bin/./simulate
   
@@ -53,7 +60,7 @@ Download Mujoco200:**
     env.render()
     env.step(env.action_space.sample()) # take a random action
     
- **Matlab engine for python:
+ **Matlab engine for python:**
  
     install matlab engine for python : 
     follow the instructions on this link -
