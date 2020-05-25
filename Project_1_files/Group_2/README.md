@@ -73,8 +73,8 @@ Download Mujoco200:**
     
 troubleshooting installing mujoco-py ?\
 use the following link git https://github.com/openai/mujoco-py\
- **Matlab engine for python:**
-\install matlab engine for python : 
+**Matlab engine for python:**
+install matlab engine for python : 
    follow the instructions on this link -
    https://www.mathworks.com/help/matlab/matlab_external/install-the-matlab-engine-for-python.html
    following link should be helpful for problames during matlab engine install
