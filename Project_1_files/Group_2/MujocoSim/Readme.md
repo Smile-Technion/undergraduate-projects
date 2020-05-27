@@ -23,7 +23,5 @@ MujocoSim contains all the files required to run the UR5 simulation ,
 **path calc** - build polynomial path one dimension.
 ![Simulation](https://github.com/SmileLab-technion/undergraduate-projects/blob/master/Project_1_files/Group_2/MujocoSim/image.png)
 
-![Watch Video](https://youtu.be/33m-gvbTRRs)
+[![Watch Video](https://github.com/SmileLab-technion/undergraduate-projects/blob/master/Project_1_files/Group_2/MujocoSim/image.png)](https://youtu.be/33m-gvbTRRs)
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/33m-gvbTRRs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
