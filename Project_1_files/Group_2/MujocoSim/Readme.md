@@ -21,3 +21,4 @@ MujocoSim contains all the files required to run the UR5 simulation ,
 **Task.py** - Go_to function which use closed loop control (regular or impedance),
 
 **path calc** - build polynomial path one dimension.
+![Simulation](https://github.com/SmileLab-technion/undergraduate-projects/blob/master/Project_1_files/Group_2/MujocoSim/image.png)
