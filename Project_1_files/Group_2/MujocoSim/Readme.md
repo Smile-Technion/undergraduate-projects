@@ -1,12 +1,12 @@
 MujocoSim contains all the files required to run the UR5 simulation ,
 
-**Controller.py**  
+**Controller.py**  Parent class for control sub-class
 
-**DataHandler.py**  	
+**DataHandler.py** Creates 3D data object with simple log function
 
-**Enums.py**  	
+**Enums.py** Enumarated impedance control types
 
-**Graph.py** plot data []
+**Graph.py** plot data [desired position,impedance postion,postion error,control effort,contact force,desired trajectory]
 
 **Impedance.py**  -solve impedance equations , using ODE 
 
