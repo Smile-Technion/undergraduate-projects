@@ -9,3 +9,15 @@ The project includes: Examining the tolerances of accuracy and success of the ta
 3. Solve the "inverse kinematics" problem for the UR5 robot
 4. Combination of PID and IM-IC controllers within the simulation
 5. Improving mission success by spiraling search
+
+# Functions:
+UR5_kinematics.py - This function has the solution of the "inverse kinematics" and "forward kinematics" problem of the UR5 robot using the H-D method
+
+# Mujoco_Sim:
+Contains the model of the problem in Mujoco, And the full simulation "main.py"
+
+# Docs:
+Contains all presentations, articles, summaries and reports of the project.
+
+# Multimedia:
+Contains the photos, graphs and videos of the project
