@@ -13,7 +13,7 @@ The project includes: Examining the tolerances of accuracy and success of the ta
 # Functions:
 UR5_kinematics.py - This function has the solution of the "inverse kinematics" and "forward kinematics" problem of the UR5 robot using the H-D method
 
-# Mujoco_Sim:
+# Mujoco Simulation:
 Contains the model of the problem in Mujoco, And the full simulation "main.py"
 
 # Docs:
