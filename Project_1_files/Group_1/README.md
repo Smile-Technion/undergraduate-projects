@@ -3,7 +3,7 @@ The project is part of an association that aims to create a set of tools that wi
 The purpose of our project is to create a simulation in the mujoco software of a 6D robot that: performs a Peg-in-Hole mission using impedance control.
 The project includes: Examining the tolerances of accuracy and success of the task, and proving that impedance control improves success rates.
 
-# Parts of the Proquite:
+# Parts of the project:
 1. Simulation of a 2-degree freedom robot with PID and IM-IC control
 2. Simulation of UR5 robot in mujoco software
 3. Solve the "inverse kinematics" problem for the UR5 robot
