@@ -2,13 +2,14 @@
 # by: Gal Schachmundes and Nadav Amir
 
 Hello,
-We are two mechnical engneering graduates from the Technion - Israel Institute of Technology.
+We are two mechanical engneering graduates from the Technion - Israel Institute of Technology.
 1. Nadav Amir - ndvamr@gmail.com
 2. Gal Schachmundes - galsch911@gmail.com 
 
 This git describes our undergraduate final project which we prepared during 2020-2021. 
 feel free to contact us by email for any question.
 
+# introduction
 Our project was part of an association that aims to create a set of tools that will help industrial robots to behave better in situations that involve interaction with flexible objects and operation within close disance to humans .
 The activities are activities such as: assembling flexible components and wiring electrical wires.
 
