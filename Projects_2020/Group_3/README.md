@@ -10,23 +10,16 @@ This git describes our undergraduate final project which we prepared during 2020
 feel free to contact us by email for any question.
 
 # introduction
-Our project was part of an association that aims to create a set of tools that will help industrial robots to behave better in situations that involve interaction with flexible objects and operation within close disance to humans .
+Our project was part of an association that aims to create a set of tools that will help industrial robots to behave better in situations that involve interaction with flexible objects and operation within close disance to human enviroment.
 The activities are activities such as: assembling flexible components and wiring electrical wires.
 
 # What was the purpose of our project?:
-The purpose of the project was to simulate impedace behavior in a robotirc  matipulator to performs an electrical cable wiring mission.
-The project consists of:
+The purpose of the project was to simulate impedace behavior in a robotirc matipulator to performs an electrical cable wiring mission.
 
+The project consists of:
 1.Impedance simulation in matlab - simscape.
 2.Simulation built in mujoco py which simulate the operation of 3 DOF robot in a cable wiring mission: PD and impedance controllers are avaliable.
 3.Reinforcement learning simulation built in mujoco py using gym enviroment and stable baselines DDPG algoritm.  
-
-# Parts of the project:
-1. Simulation of a 2-degree freedom robot with PID and IM-IC control
-2. Simulation of UR5 robot in mujoco software
-3. Solve the "inverse kinematics" problem for the UR5 robot
-4. Combination of PID and IM-IC controllers within the simulation
-5. Improving mission success by spiraling search
 
 # 2D Robot Simulation:
 Simulation of a 2-degree freedom robot with PID and IM-IC control, the simulation was written in Matlab
