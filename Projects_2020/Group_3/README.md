@@ -34,15 +34,14 @@ applications to be installed:
 
 -Mujoco 150 -http://www.mujoco.org/
     download from here: https://www.roboti.us/
-    installation instructions (as we did it in our project):
-        1.Download mjpro150 win from the MuJoCo site.https://www.roboti.us/index.html. 
-       
-   2.Unzip the downloaded mujoco150 directory into ~/.mujoco/mujoco150, and place your license key (the mjkey.txt file from your email) at ~/.mujoco/mjkey.txt.
-        *If you want to specify a nonstandard location for the key and package, use the env variables MUJOCO_PY_MJKEY_PATH and MUJOCO_PY_MUJOCO_PATH.
-    testing Mujoco install correct: cd ~/.mujoco/mjpro150/bin/./simulate
+    installation instructions (as we did it in our project):   
+    1.Download mjpro150 win from the MuJoCo site.https://www.roboti.us/index.html.   
+    2.Unzip the downloaded mujoco150 directory into ~/.mujoco/mujoco150, and place your license key (the mjkey.txt file         from your email) at ~/.mujoco/mjkey.txt.
+        *If you want to specify a nonstandard location for the key and package, use the env variables MUJOCO_PY_MJKEY_PATH          and MUJOCO_PY_MUJOCO_PATH.
+         testing Mujoco install correct: cd ~/.mujoco/mjpro150/bin/./simulate
         
- -mujoco-py - https://github.com/openai/mujoco-py
+ -mujocopy - https://github.com/openai/mujoco-py
 
 -gym - https://gym.openai.com/docs/
 
--StableBaselines: https://stable-baselines.readthedocs.io/en/master/
+-StableBaselines - https://stable-baselines.readthedocs.io/en/master/
