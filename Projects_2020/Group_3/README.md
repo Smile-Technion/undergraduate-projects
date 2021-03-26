@@ -45,3 +45,4 @@ applications to be installed:
 -gym - https://gym.openai.com/docs/
 
 -StableBaselines - https://stable-baselines.readthedocs.io/en/master/
+end.
