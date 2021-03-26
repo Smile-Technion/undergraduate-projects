@@ -1,1 +1,3 @@
-sdfsdfsf
+In order to execute the simulation create new python project and exctract all the files in the same directory.
+make sure XML Path is correct (can be modified in: "globals.py")
+"main.py" is the main file which starts the simulation.
