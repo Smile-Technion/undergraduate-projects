@@ -11,15 +11,15 @@ feel free to contact us by email for any question.
 
 # introduction
 Our project was part of an association that aims to create a set of tools that will help industrial robots to behave better in situations that involve interaction with flexible objects and operation within close disance to human enviroment.
-The activities are activities such as: assembling flexible components and wiring electrical wires.
+The activities are activities such as: assembling flexible components and wiring electrical cables.
 
 # What was the purpose of our project?:
 The purpose of the project was to simulate impedace behavior in a robotirc matipulator to performs an electrical cable wiring mission.
 
 The project consists of:
-1.Impedance simulation in matlab - simscape.
-2.Simulation built in mujoco py which simulate the operation of 3 DOF robot in a cable wiring mission: PD and impedance controllers are avaliable.
-3.Reinforcement learning simulation built in mujoco py using gym enviroment and stable baselines DDPG algoritm.  
+1.Impedance simulation in Matlab using Simscape.
+2.Simulation built in mujoco py which simulate the operation of 3 DOF robot in a cable wiring mission: PD and impedance controllers are avaliable. controllers and Impedance parameters can be adjusted.
+3.Reinforcement learning simulation built in mujoco py using gym enviroment and stable baselines DDPG algoritm. several reward mechanisms has been tested.  
 
 
 # Technical data - Installation of softwares:
@@ -43,4 +43,6 @@ applications to be installed:
         
  -mujoco-py - https://github.com/openai/mujoco-py
 
+-gym - https://gym.openai.com/docs/
 
+-StableBaselines: https://stable-baselines.readthedocs.io/en/master/
