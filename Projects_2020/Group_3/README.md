@@ -18,7 +18,9 @@ The purpose of the project was to simulate impedace behavior in a robotirc matip
 
 The project consists of:
 1.Impedance simulation in Matlab using Simscape multibody.
+
 2.Simulation built in mujoco py which simulate the operation of 3 DOF robot in a cable wiring mission: PD and impedance controllers are avaliable. controllers and Impedance parameters can be adjusted.
+
 3.Reinforcement learning simulation built in mujoco py using gym enviroment and stable baselines DDPG algoritm. several reward mechanisms has been tested.  
 
 
