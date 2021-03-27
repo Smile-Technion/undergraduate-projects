@@ -3,3 +3,6 @@ Based on the paper: Accuracy/Robustness Dilemma in Impedance Control by Valency 
 Simulation is based on lines [7] and [8] in the paper -'DB-IC' control law.
 
 contact force with a stationary element is being simulated by exerting exponential forces on the mass-spring-damper element.
+
+For this simulation we used Matlab version -2020a with simscape multibody package.
+If you want to run this simulation with previous version of matlab please contact us by email.
