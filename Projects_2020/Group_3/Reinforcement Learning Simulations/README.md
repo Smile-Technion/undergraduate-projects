@@ -10,5 +10,5 @@ in order to open the simulations you need to do the following steps:
 		2dof__force_sensing_env_mechanismHorizontal3.xml is the current xml version of the project the other files are previous versions
 	D.open new python project with the files as follows:
 		1.Standard RL
-		2.Impedance RL method 1
+	 	2.Impedance RL method 1
 		3.Impedance RL method 2
