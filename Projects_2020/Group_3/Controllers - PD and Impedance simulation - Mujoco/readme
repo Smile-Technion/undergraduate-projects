@@ -1,4 +1,5 @@
-In order to execute the simulation create new python project and exctract all the files in the same directory.
-make sure XML Path is correct (can be modified in: "globals.py")
-"main.py" is the main file which starts the simulation.
-use path_reader.m to view graphs that describes the motion of the robot.
+In order to execute the simulation please create a new python project and extract all the files in the same directory.
+make sure XML Path is correct (can be modified in "globals.py").
+"main.py" is the main file that starts the simulation.
+use path_reader.m to view graphs that describe the motion of the manipulator.
+
