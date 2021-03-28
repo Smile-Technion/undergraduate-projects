@@ -1,0 +1,87 @@
+<mujoco model="Robot">
+	<compiler angle="radian" inertiafromgeom="true"
+	              texturedir="textures/"
+              meshdir="mesh/visual/"/>
+	<default>
+		<joint armature="1" damping="1" limited="true"/>
+		<geom contype="0" friction="1 0.1 0.1" rgba="0.7 0.7 0 1"/>
+	</default>
+	<option gravity="0 0 -9.81" integrator="RK4" timestep="0.01"/>
+	
+	<asset>
+		<mesh file="Part1.stl" name="bread_mesh1" scale="0.012 0.012 0.012"  />
+		<mesh file="Part2.stl" name="bread_mesh2" scale="0.012 0.012 0.012"  />
+		<mesh file="Part3.stl" name="bread_mesh3" scale="0.012 0.012 0.012"  />
+		<mesh file="Part4.stl" name="bread_mesh4" scale="0.012 0.012 0.012"  />	
+		<mesh file="Part5.stl" name="bread_mesh5" scale="0.012 0.012 0.012"  />
+		<mesh file="Part6.stl" name="bread_mesh6" scale="0.012 0.012 0.012"  />
+		<mesh file="Part7.stl" name="bread_mesh7" scale="0.012 0.012 0.012"  />
+		<mesh file="Part8.stl" name="bread_mesh8" scale="0.012 0.012 0.012"  />
+		<mesh file="Part9.stl" name="bread_mesh9" scale="0.012 0.012 0.012"  />
+ 
+		<!--Textures-->
+		<texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1"  width="256" height="256"/>
+	</asset>
+	
+	<worldbody>
+		<!-- Arena -->
+		
+		<geom conaffinity="1" contype="1" name="ground" pos="0 0 -0.05" rgba="0.9 0.9 0.9 1" size="1 1 10" type="plane"/>
+		
+		<camera euler="0 0 0" fovy="40" name="rgb" pos="0 0 2"></camera>
+		<camera euler="0 0 0" fovy="70" name="rgb1" pos="0 0.3 0.15"></camera>
+		<camera euler="0.5 -0.5  -0.5" fovy="30" name="rgb2" pos="-1 -1 2"></camera>
+		<camera euler="0.65 0.9 0.7" fovy="20" name="rgb3" pos="4.5  -2.0 3"></camera>
+
+		<geom conaffinity="0" fromto="-.8 -.8 .01 .8 -.8 .01" name="sideS" rgba="0.9 0.4 0.6 1" size=".02" type="capsule"/>
+		<geom conaffinity="0" fromto=" .8 -.8 .01 .8  .8 .01" name="sideE" rgba="0.9 0.4 0.6 1" size=".02" type="capsule"/>
+		<geom conaffinity="0" fromto="-.8  .8 .01 .8  .8 .01" name="sideN" rgba="0.9 0.4 0.6 1" size=".02" type="capsule"/>
+		<geom conaffinity="0" fromto="-.8 -.8 .01 -.8 .8 .01" name="sideW" rgba="0.9 0.4 0.6 1" size=".02" type="capsule"/>
+		<!-- Arm -->
+		<geom conaffinity="0" contype="0" fromto="0 0 0 0 0 0.02" name="root" rgba="0.9 0.4 0.6 1" size=".011" type="cylinder"/>
+		<body name="body0" pos="0 0 .01">
+			<geom conaffinity="1" contype="1" fromto="0 0 0 0.1 0 0" name="link0" rgba="0.0 0.4 0.6 1" size=".01" type="capsule"/>
+			<joint axis="0 0 1" limited="false" name="joint0" pos="0 0 0" type="hinge"/>
+			<body name="body1" pos="0.1 0 0">
+				<joint axis="0 0 1" limited="true" name="joint1" pos="0 0 0" range="-3.0 3.0" type="hinge"/>
+				<geom conaffinity="1" contype="1" fromto="0 0 0 0.1 0 0" name="link1" rgba="0.0 0.4 0.6 1" size=".01" type="capsule"/>
+				<body name="body2" pos="0.1 0 0">
+					<joint axis="0 0 1" limited="true" name="joint2" pos="0 0 0" range="-3.0 3.0" type="hinge"/>
+					<geom conaffinity="1" contype="1" fromto="0 0 0 0.1 0 0" name="link2" rgba="0.0 0.4 0.6 1" size=".01" type="capsule"/>
+					<body name="fingertip" pos="0.11 0 0">
+						<geom conaffinity="1" contype="1" name="fingertip" pos="0 0 0" rgba="0.0 0.8 0.6 1" size=".01" type="sphere"/>
+						<site name="fingertip" size="0.001" pos="0 0 0" rgba="0.0 0.8 0.6 1"/>								
+
+					</body>
+				</body>	
+			</body>
+		</body>
+		<!-- Target -->
+		
+		<body name="target" pos="0 0.0 0.01">
+			<joint armature="0" axis="1 0 0" damping="0" limited="true" name="target_x" pos="0 0 0" range="-.33 .33" ref="0" stiffness="0" type="slide"/>
+			<joint armature="0" axis="0 1 0" damping="0" limited="true" name="target_y" pos="0 0 0" range="-.33 .33" ref="0" stiffness="0" type="slide"/>
+			<geom conaffinity="0" contype="0" name="target" pos="0 0 0" rgba="0.9 0.2 0.2 1" size=".005" type="sphere"/>
+		</body>
+		
+		<body name="rock1">
+				<freejoint/>
+				<inertial pos="0 0.2 0.01" mass="0.05" diaginertia="422e-001 422e-001 422e-001"/>
+				<geom type="box" size=" 0.16 0.04 0.08" friction="0.03 0.03 0.03" rgba=".6 .5 .5 1" />
+		</body>
+		
+		
+	</worldbody>
+	<actuator>
+		<motor ctrllimited="true" ctrlrange="-1 1" gear="20.0" joint="joint0"/>
+		<motor ctrllimited="true" ctrlrange="-1 1" gear="20.0" joint="joint1"/>
+		<motor ctrllimited="true" ctrlrange="-1 1" gear="20.0" joint="joint2"/>
+	</actuator>
+	
+	<sensor>
+		<velocimeter name="tar_vel" site="fingertip"/>
+		<accelerometer  name="tar_acc" site="fingertip"/>
+		<force name="tar_touch" site="fingertip"/>
+		<torque name="tar_torque" site="fingertip"/>
+	</sensor>
+</mujoco>

@@ -1,0 +1,96 @@
+<mujoco model="Robot">
+	<compiler angle="radian" inertiafromgeom="true"
+	          texturedir="textures/"
+              meshdir="mesh/visual/"/>
+
+	<asset>
+		<mesh file="Part1.stl" name="bread_mesh1" scale="0.012 0.012 0.012"  />
+		<mesh file="Part2.stl" name="bread_mesh2" scale="0.012 0.012 0.012"  />
+		<mesh file="Part3.stl" name="bread_mesh3" scale="0.012 0.012 0.012"  />
+		<mesh file="Part4.stl" name="bread_mesh4" scale="0.012 0.012 0.012"  />	
+		<mesh file="Part5.stl" name="bread_mesh5" scale="0.012 0.012 0.012"  />
+		<mesh file="Part6.stl" name="bread_mesh6" scale="0.012 0.012 0.012"  />
+		<mesh file="Part7.stl" name="bread_mesh7" scale="0.012 0.012 0.012"  />
+		<mesh file="Part8.stl" name="bread_mesh8" scale="0.012 0.012 0.012"  />
+		<mesh file="Part9.stl" name="bread_mesh9" scale="0.012 0.012 0.012"  />
+ 
+		<!--Textures-->
+		<texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1"  width="256" height="256"/>
+	</asset>
+	
+	<worldbody>
+		<!--Lighting parameters-->
+		<light pos="0 1 1" dir="0 -1 -1" diffuse="1 1 1"/>
+		<!--Floor Property-->
+		<geom name="floor" pos="0 0 0" rgba="1 1 1 0.5" size="10 10 10" type="plane"/>
+		<!-- Arm -->
+		<geom conaffinity="0" contype="0" fromto="0 0 2 0 0 2.06" name="root" rgba="0.9 0.4 0.6 1" size=".05" type="cylinder"/>
+		<body name="body0">
+			<inertial pos="0.5 0 2" mass="0.01" diaginertia="1e-008 1e-008 1e-008" />
+			<geom type="capsule" fromto="0 0 2  1 0 2" size="0.05" rgba=".0 .4 .6 1"/>	
+			<joint name='joint0' type="hinge" pos="0.0 0 2" axis="0 0 1"/>   
+			<body name="body1">
+					<inertial pos="1.6 0 2" mass="0.01" diaginertia="1e-008 1e-008 1e-008" />
+					<geom type="capsule" fromto="1 0 2  2.2 0 2" size="0.05" rgba=".0 .4 0.6 1"/>	
+					<joint name='joint1' type="hinge" pos="1 0 2" axis="0 0 1"/>   
+					<body name="body2">
+					<inertial pos="2.4 0 2" mass ="0.01" diaginertia="1e-008 1e-008 1e-008" />
+						<geom type="capsule" fromto="2.2 0 2  2.6 0 2" size="0.05" rgba=".0 .4 .6 1"/>
+						<joint name='joint2' type="hinge" pos="2.2 0 2" axis="0 0 1"/>  
+						<body name="fingertip">
+							<inertial pos="2.62 0 2" mass="0.01" diaginertia="1e-008 1e-008 1e-008" />
+							<geom name="fingertip" pos="2.62 0 2" rgba="0.0 0.8 0.6 1" size=".05" type="sphere"/>
+							<site name="fingertip" size="0.006" pos="2.6 0 2" rgba="0.0 0.8 0.6 1"/>						
+							!-->
+						</body>	
+					</body>
+					
+			</body>	
+		</body>
+		<!-- Target -->
+		
+		<body name="target" pos="0 0.0 2.00">
+			<joint armature="0" axis="1 0 0" damping="0" limited="true" name="target_x" pos="0 0 0" range="-.33 .33" ref="0" stiffness="0" type="slide"/>
+			<joint armature="0" axis="0 1 0" damping="0" limited="true" name="target_y" pos="0 0 0" range="-.33 .33" ref="0" stiffness="0" type="slide"/>
+			<geom conaffinity="0" contype="0" name="target" pos="0 0 0" rgba="0.9 0.2 0.2 1" size=".02" type="sphere"/>
+		</body>
+		
+		<body name="bread_mesh">
+			<geom pos="0.25 2.1 2.25" friction="1 0.05 0.001" mesh="bread_mesh1" type="mesh" rgba="0 1 0 0.3" group="1" mass="0.0001" zaxis="0 0 -1"/>
+			<geom pos="0.0 2.1 2.25" friction="1 0.05 0.001" mesh="bread_mesh2" type="mesh" rgba="0 1 0 0.3" group="1" mass="0.0001" zaxis="0 0 -1"/>
+			<geom pos="0.338 2.1 2.25" friction="1 0.05 0.001" mesh="bread_mesh3" type="mesh" rgba="0 1 0 0.3" group="1" mass="0.0001" zaxis="0 0 -1"/>
+			<geom pos="0.0 2.1 2.25" friction="1 0.05 0.001" mesh="bread_mesh4" type="mesh" rgba="0 1 0 0.3" group="1" mass="0.0001" zaxis="0 0 -1"/>
+			<geom pos="0.25 2.1 1.911" friction="1 0.05 0.001" mesh="bread_mesh5" type="mesh" rgba="0 1 0 1" group="1" mass="0.0001" zaxis="0 0 -1"/>
+			<geom pos="0.0 2.1 1.911" friction="1 0.05 0.001" mesh="bread_mesh6" type="mesh" rgba="0 1 0 1" group="1" mass="0.0001" zaxis="0 0 -1"/>
+			<geom pos="0.338 2.1 2.00" friction="1 0.05 0.001" mesh="bread_mesh7" type="mesh" rgba="0 1 0 1" group="1" mass="0.0001" zaxis="0 0 -1"/>
+			<geom pos="0.0 2.1 2.00" friction="1 0.05 0.001" mesh="bread_mesh8" type="mesh" rgba="0 1 0 1" group="1" mass="0.0001" zaxis="0 0 -1"/>
+			<geom pos="0.162 2.1 2.088" friction="1 0.05 0.001" mesh="bread_mesh9" type="mesh" rgba="0 1 0 0.7" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		</body>
+			
+		<body name="spr1">
+			<inertial pos="0 0 0" mass="0.005" diaginertia="1e-008 1e-008 1e-008" />
+			<geom conaffinity="1" contype="1" name='spr1' type="box" pos="0.17 1.53 2" size="0.10 0.013 0.04" axisangle ="0 0 1 60" friction="0.01 0.01 0.01" rgba="0.0 .5 .5 1" group="1" />
+			<joint name='spr1' type="slide" pos="0 0 0.01" axis="0.866 -0.5 0" stiffness="0.005" damping="0.001"  /> 
+		</body>
+			
+		<body name="spr2">
+			<inertial pos="0 0 0" mass="0.005" diaginertia="1e-008 1e-008 1e-008" />
+			<geom conaffinity="1" contype="1" name='spr2' type="box" pos="0.33 1.53 2" size="0.10 0.013 0.04" axisangle ="0 0 -1 60" friction="0.01 0.01 0.01" rgba="0.0 .5 .5 1" group="1" />
+			<joint name='spr2' type="slide" pos="0 0 0.01" axis="0.866 0.5 0" stiffness="0.005" damping="0.001"  /> 
+		</body>
+		
+		
+	</worldbody>
+	<actuator>
+		<motor ctrllimited="true" ctrlrange="-1 1" gear="20.0" joint="joint0"/>
+		<motor ctrllimited="true" ctrlrange="-1 1" gear="20.0" joint="joint1"/>
+		<motor ctrllimited="true" ctrlrange="-1 1" gear="20.0" joint="joint2"/>
+	</actuator>
+	
+	<sensor>
+		<velocimeter name="tar_vel" site="fingertip"/>
+		<accelerometer  name="tar_acc" site="fingertip"/>
+		<force name="tar_touch" site="fingertip"/>
+		<torque name="tar_torque" site="fingertip"/>
+	</sensor>
+</mujoco>

@@ -1,0 +1,139 @@
+
+<mujoco model="example">
+    <compiler coordinate="global"
+              texturedir="textures/"
+              meshdir="mesh/visual/"/>
+	<visual>
+		<global  fovy= "real"/>
+	</visual>
+    <option>
+		<!--
+        <flag gravity="disable"/>
+		-->	
+    </option>
+	  
+    <asset>
+		<mesh file="Part1.stl" name="bread_mesh1" scale="0.05 0.05 0.05"  />
+		<mesh file="Part2.stl" name="bread_mesh2" scale="0.05 0.05 0.05"  />
+		<mesh file="Part3.stl" name="bread_mesh3" scale="0.05 0.05 0.05"  />
+		<mesh file="Part4.stl" name="bread_mesh4" scale="0.05 0.05 0.05"  />
+		<mesh file="Part5.stl" name="bread_mesh5" scale="0.05 0.05 0.05"  />
+		<mesh file="Part6.stl" name="bread_mesh6" scale="0.05 0.05 0.05"  />
+		<mesh file="Part7.stl" name="bread_mesh7" scale="0.05 0.05 0.05"  />
+		<mesh file="Part8.stl" name="bread_mesh8" scale="0.05 0.05 0.05"  />
+		<mesh file="Part9.stl" name="bread_mesh9" scale="0.05 0.05 0.05"  />
+
+		<!--Textures-->
+		<texture type="skybox" builtin="gradient" rgb1="1 1 1" rgb2=".6 .8 1"  width="256" height="256"/>
+	</asset>
+	
+	<worldbody>
+		<!--Lighting parameters-->
+		<light pos="0 1 1" dir="0 -1 -1" diffuse="1 1 1"/>
+		<!--Floor Property-->
+		<geom name="floor" pos="0 0 0" rgba="1 1 1 0.5" size="10 10 10" type="plane"/>
+		<geom conaffinity="0" contype="0" fromto="0 0 2 0 0 2.06" name="root" rgba="0.9 0.4 0.6 1" size=".05" type="cylinder"/>
+		<body name="first_pole">
+			<inertial pos="0.5 0 2" mass="0.01" diaginertia="1e-008 1e-008 1e-008" />
+			<geom type="capsule" fromto="0 0 2  1 0 2" size="0.05" rgba=".0 .4 .6 1"/>	
+			<joint name='a' type="hinge" pos="0.0 0 2" axis="0 0 1"/>   
+			<body name="second_pole">
+					<inertial pos="1.6 0 2" mass="0.01" diaginertia="1e-008 1e-008 1e-008" />
+					<geom type="capsule" fromto="1 0 2  2.2 0 2" size="0.05" rgba=".0 .4 0.6 1"/>	
+					<joint name='b' type="hinge" pos="1 0 2" axis="0 0 1"/>   
+					<body name="third pole">
+					<inertial pos="2.4 0 2" mass ="0.01" diaginertia="1e-008 1e-008 1e-008" />
+						<geom type="capsule" fromto="2.2 0 2  2.6 0 2" size="0.05" rgba=".0 .4 .6 1"/>
+						<joint name='c' type="hinge" pos="2.2 0 2" axis="0 0 1"/>  
+						<body name="gripper">
+							<inertial pos="2.62 0 2" mass="0.01" diaginertia="1e-008 1e-008 1e-008" />
+							<geom name="gripper" pos="2.62 0 2" rgba="0.0 0.8 0.6 1" size=".05" type="sphere"/>
+							<site name="target" size="0.006" pos="2.6 0 2" rgba="0.0 0.8 0.6 1"/>	
+							<!--cylinder version of gripper
+							<geom type="cylinder" fromto="2.6 0 2  2.7 0 2" size="0.06" name="gripper" />	
+							<site name="target" size="0.01" pos="2.6 0 2" rgba="0.8 0.4 0 1"/>								
+							!-->
+						</body>	
+					</body>
+					
+			</body>	
+		</body>
+		
+		<body name="bread_mesh">
+		<geom pos="0.25 2.1 2.25" friction="1 0.05 0.001" mesh="bread_mesh1" type="mesh" rgba="0 1 0 0.3" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		<geom pos="0.0 2.1 2.25" friction="1 0.05 0.001" mesh="bread_mesh2" type="mesh" rgba="0 1 0 0.3" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		<geom pos="0.338 2.1 2.25" friction="1 0.05 0.001" mesh="bread_mesh3" type="mesh" rgba="0 1 0 0.3" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		<geom pos="0.0 2.1 2.25" friction="1 0.05 0.001" mesh="bread_mesh4" type="mesh" rgba="0 1 0 0.3" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		<geom pos="0.25 2.1 1.911" friction="1 0.05 0.001" mesh="bread_mesh5" type="mesh" rgba="0 1 0 1" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		<geom pos="0.0 2.1 1.911" friction="1 0.05 0.001" mesh="bread_mesh6" type="mesh" rgba="0 1 0 1" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		<geom pos="0.338 2.1 2.00" friction="1 0.05 0.001" mesh="bread_mesh7" type="mesh" rgba="0 1 0 1" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		<geom pos="0.0 2.1 2.00" friction="1 0.05 0.001" mesh="bread_mesh8" type="mesh" rgba="0 1 0 1" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		<geom pos="0.162 2.1 2.088" friction="1 0.05 0.001" mesh="bread_mesh9" type="mesh" rgba="0 1 0 0.7" group="1" mass="0.0001" zaxis="0 0 -1"/>
+		
+		</body>
+			
+
+		
+		<body name="spr1">
+			<inertial pos="0 0 0" mass="0.005" diaginertia="1e-008 1e-008 1e-008" />
+			<geom conaffinity="1" contype="1" name='spr1' type="box" pos="0.17 1.53 2" size="0.10 0.013 0.04" axisangle ="0 0 1 60" friction="0.01 0.01 0.01" rgba="0.0 .5 .5 1" group="1" />
+			<joint name='spr1' type="slide" pos="0 0 0.01" axis="0.866 -0.5 0" stiffness="0.005" damping="0.001"  /> 
+		</body>
+			
+		<body name="spr2">
+			<inertial pos="0 0 0" mass="0.005" diaginertia="1e-008 1e-008 1e-008" />
+			<geom conaffinity="1" contype="1" name='spr2' type="box" pos="0.33 1.53 2" size="0.10 0.013 0.04" axisangle ="0 0 -1 60" friction="0.01 0.01 0.01" rgba="0.0 .5 .5 1" group="1" />
+			<joint name='spr2' type="slide" pos="0 0 0.01" axis="0.866 0.5 0" stiffness="0.005" damping="0.001"  /> 
+		</body>
+		
+    
+		
+		<!--
+		<body name="spr1_xf">
+				<inertial pos="0 0.8 2" mass="0.01" diaginertia="1e-008 1e-008 1e-008" />
+				<geom type="cylinder" fromto="-0.1 0.75 2  0 0.75 2" size="0.03" friction="0.50 0.50 0.90" rgba=".0 .5 .5 1" />
+				<joint name='sprx' type="slide" pos="0 0.7 2.00" axis="1 0 0" stiffness="0.6" damping="0.5"  /> 
+		</body>
+		-->
+		
+		<!--
+		<body name="spr1">
+				<geom type="box" pos="0.17 1.4 2" size="0.01 0.06 0.08" axisangle ="0 0 -1 30" friction="0.01 0.01 0.01" rgba=".0 .5 .5 1" />
+				<joint name='spr1' type="slide" pos="0 1.3 2.05" axis="-0.86 0.5 0" stiffness="0.002" damping="0.001"  springref  ="0.001"/> 
+		</body>
+		
+		<body name="spr2">
+				<geom type="box" pos="0.30 1.4 2" size="0.01 0.06 0.08" axisangle ="0 0 1 30" friction="0.01 0.01 0.01" rgba=".0 .5 .5 1" />
+				<joint name='spr2' type="slide" pos="0 1.3 1.95" axis="0.86 0.5 0" stiffness="0.002" damping="0.001"  springref  ="0.001"/> 
+		</body>
+		
+		-->
+		
+		<!--
+		<body name="spr3">
+				<geom type="box" pos="0.29 1.0 2" size="0.01 0.16 0.08" axisangle ="0 0 1 90" friction="0.01 0.01 0.01" rgba=".0 .5 .5 1" />
+				<joint name='spr3' type="slide" pos="0 1.3 1.95" axis="0 1 0" stiffness="0.0002" damping="0.001"  springref  ="0.001"/> 
+		</body>
+		-->
+	
+		<body name="g" pos="0.240 2 2">
+			<geom conaffinity="0" contype="0" name="g" pos="0.248 1.9 2.08" rgba="1 0.0 0.0 1" size=".03" type="sphere"/>
+		</body>
+		
+</worldbody>
+	
+	<actuator>
+		<motor joint='a'/>
+		<motor joint='b'/>
+		<motor joint='c'/>
+	</actuator>	
+	
+	<sensor>
+			<velocimeter name="tar_vel" site="target"/>
+			<accelerometer  name="tar_acc" site="target"/>
+			<force name="tar_touch" site="target"/>
+			<torque name="tar_torque" site="target"/>
+			
+	</sensor>
+
+</mujoco>
