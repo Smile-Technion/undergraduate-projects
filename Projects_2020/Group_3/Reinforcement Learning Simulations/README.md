@@ -15,5 +15,6 @@ in order to open the simulations you need to do the following steps:
 	E. for each learning style replace all the relevant files with the correspondent files from the learning directory (main difference is in 		   ProjectEnvImp.py)
 	F. In order to adjuct learning hyperparameters such as learning rates, exploration , etc please do to: stable_baselines\ddpg\ddpg.py
 	G. use matlab 2020a files to analyze the simulation:
-		a.Path_reader.m : analyze manipulator dynamics.
+		a.Path_reader.m : creates graphs that describe the motion of the manipulator.
 		b.Data_reader : analyze learning process.
+feel free to contact us by email for any question or misunderstanding.
