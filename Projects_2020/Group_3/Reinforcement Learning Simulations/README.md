@@ -1,5 +1,7 @@
 in order to open the simulations you need to do the following steps:
 	A. install stable baselines.
+	
+	
 	B. install gym.
 	C. gym file replacement:
 		1.gym\envs: replace __init__.py with file with __init__envs.py (after replacement - change the name for __init__.py)
