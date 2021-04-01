@@ -1,3 +1,4 @@
+The control law which is depcited here is based on the paper: Accuracy/Robustness Dilemma in Impedance Control by Valency and Zacksenhouse (2003) - 'PB-IC'
 In order to execute the simulation please create a new python project and extract all the files in the same directory.
 make sure XML Path is correct (can be modified in "globals.py").
 "main.py" is the main file that starts the simulation.
