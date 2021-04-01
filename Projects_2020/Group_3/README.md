@@ -6,17 +6,17 @@ We are two mechanical engneering graduates from the Technion - Israel Institute 
  1. Nadav Amir - ndvamr@gmail.com
  2. Gal Schachmundes - galsch911@gmail.com 
 
-This git describes our undergraduate final project which we prepared during 2020-2021. 
+This git describes our undergraduate final project which we worked on during 2020-2021. 
 feel free to contact us by email for any question.
 
 # introduction
-Our project was part of an association that aims to create a set of tools that will help industrial robots to behave better in situations that involve interaction with flexible objects and operation within close disance to human enviroment.
-The activities are activities such as: assembling flexible components and wiring electrical cables.
+Our project was part of an association that aims to create a set of tools that will help industrial robots to behave better in situations that involve interaction with flexible objects and on operations within close disance to human enviroment.
+Examples for such activities are: assembling flexible components and wiring electrical cables.
 
 # What was the purpose of our project?:
-The purpose of the project was to simulate impedace behavior in a robotirc matipulator to performs an electrical cable wiring mission.
+The purpose of the project was to simulate impedace behavior in a robotic matipulator to perform an electrical cable wiring mission.
 
-The project consists of.
+The project consists of:
  1. Impedance simulation in Matlab using Simscape multibody.
  2. Simulation built in mujoco py which simulate the operation of 3 DOF robot in a cable wiring mission: PD and impedance      controllers are avaliable. controllers and         Impedance parameters can be adjusted.
  3. Reinforcement learning simulation built in mujoco py using gym enviroment and stable baselines DDPG algoritm. several      reward mechanisms has been tested.  
